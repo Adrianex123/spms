@@ -70,7 +70,7 @@ const orderCart = createSlice({
         })
         .filter((part: any) => part !== null);
     },
-    resetCart: (state) => {
+    resetOrderCart: (state) => {
       state.productsCart = [];
       state.partsCart = [];
       state.productsTotalPrice = 0;
@@ -88,6 +88,6 @@ export const {
   decrementProductQuantity,
   incrementPartQuantity,
   decrementPartQuantity,
-  resetCart,
+  resetOrderCart,
 } = orderCart.actions;
 export default orderCart.reducer;

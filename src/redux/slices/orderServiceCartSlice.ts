@@ -1,13 +1,8 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: any = {
-  orderServiceCart: {
-    servicesCart: [],
-    // other properties...
-  },
-  // other properties...
+  servicesCart: [],
 };
-// Define initial state
 
 const orderServiceCart = createSlice({
   name: "orderServiceCart",

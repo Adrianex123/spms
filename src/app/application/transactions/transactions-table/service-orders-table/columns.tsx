@@ -395,7 +395,7 @@ export const initialState = (branches: any) => {
                 className={cn(
                   `py-1 w-full rounded-sm hover:scale-125 transition-all duration-300 hover:shadow-2xl`,
                   item.bgColor,
-                  row.original.progress_entries.length < 5 ? "opacity-10" : "",
+                  row.original.progress_entries.length < 5 ? "opacity-10" : ""
                 )}
               ></div>
             </div>

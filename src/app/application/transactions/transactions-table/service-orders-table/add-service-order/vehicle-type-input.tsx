@@ -6,9 +6,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import SmallVehicle from "@/images/vehicle-small.png";
-import MediumVehicle from "@/images/vehicle-medium.png";
-import LargeVehicle from "@/images/vehicle-large.png";
+// import SmallVehicle from "@/images/vehicle-small.png";
+// import MediumVehicle from "@/images/vehicle-medium.png";
+// import LargeVehicle from "@/images/vehicle-large.png";
 import Image from "next/image";
 
 export default function SelectDemo({ data }: { data: any }) {
@@ -17,19 +17,19 @@ export default function SelectDemo({ data }: { data: any }) {
       id: "small",
       value: "small",
       label: "Small",
-      image: SmallVehicle,
+      // image: SmallVehicle,
     },
     {
       id: "medium",
       value: "medium",
       label: "Medium",
-      image: MediumVehicle,
+      // image: MediumVehicle,
     },
     {
       id: "large",
       value: "large",
       label: "Large",
-      image: LargeVehicle,
+      // image: LargeVehicle,
     },
   ];
 
@@ -55,11 +55,11 @@ export default function SelectDemo({ data }: { data: any }) {
               className="w-full gap-2"
             >
               <div className="w-full flex justify-between place-items-center gap-6">
-                <Image
-                  src={vehicleType.image}
+                {/* <Image
+                  // src={vehicleType.image}
                   alt={vehicleType.label}
                   className="w-28 h-12"
-                />
+                /> */}
                 <div className="w-full text-center">{vehicleType.label}</div>
               </div>
             </SelectItem>
