@@ -167,14 +167,13 @@ export default function Transactions() {
 
   return (
     <div className="w-full flex justify-center py-3.5 no-scrollbar ">
-      {ordersData.length === 0 && orderServicesData.length === 0 ? (
+      {/* {ordersData.length === 0 && orderServicesData.length === 0 ? (
         <Loading />
-      ) : (
-        <TransactionsContent
-          dataOrders={ordersData}
-          dataOrderService={orderServicesData}
-        />
-      )}
+      ) : ( */}
+      <TransactionsContent
+        dataOrders={ordersData}
+        dataOrderService={orderServicesData}
+      />
     </div>
   );
 }
