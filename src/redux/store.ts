@@ -6,6 +6,16 @@ import rolesReducer from "./slices/rolesSlice";
 import brandsReducer from "./slices/brandsSlice";
 import orderCartOptionSlice from "./slices/orderCartOptionSlice";
 import orderCartSlice from "./slices/orderCartSlice";
+import allEmployeesSlice from "./slices/allEmployeesSlice";
+import currentOrderServiceSlice from "./slices/currentOrderServiceSlice";
+import orderServiceCartOptionSlice from "./slices/orderServiceCartOptionSlice";
+import orderServiceCartSlice from "./slices/orderServiceCartSlice";
+import branchesSlice from "./slices/branchesSlice";
+import viewOrderCartSlice from "./slices/viewOrderCartSlice";
+import viewOrderServiceCartSlice from "./slices/viewOrderServiceCartSlice";
+import progressEntriesSlice from "./slices/progressEntriesSlice";
+import currentSessionSlice from "./slices/currentSessionSlice";
+import allMobileUsersSlice from "./slices/mobileUsersSlice";
 
 export const store = configureStore({
   reducer: {
@@ -17,6 +27,20 @@ export const store = configureStore({
 
     orderCartOptionSlice: orderCartOptionSlice,
     orderCart: orderCartSlice,
+    branches: branchesSlice,
+
+    orderServiceCartOptionSlice: orderServiceCartOptionSlice,
+
+    orderServiceCart: orderServiceCartSlice,
+
+    currentOrderService: currentOrderServiceSlice,
+    viewOrderCart: viewOrderCartSlice,
+    viewOrderServiceCart: viewOrderServiceCartSlice,
+    progressEntries: progressEntriesSlice,
+
+    currentSession: currentSessionSlice,
+    allMobileUser: allMobileUsersSlice,
+    allEmployees: allEmployeesSlice,
   },
 });
 
