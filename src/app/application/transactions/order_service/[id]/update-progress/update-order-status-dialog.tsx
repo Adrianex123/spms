@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useState, useTransition } from "react";
 import {
   Dialog,
   DialogContent,
@@ -22,21 +22,25 @@ import { useForm } from "react-hook-form";
 
 import { Form } from "@/components/ui/form";
 import { toast } from "@/components/ui/use-toast";
-import { toast as sonner } from "sonner";
 import { useProgressEntries } from "@/hooks/useProgressEntries";
 
-export default function UpdateOrderStatusDialog({ progress_entries }: any) {
+type progressEntriesType =
+  | {
+      id: number | any;
+      created_at: string | any;
+      progress_name: string | any;
+      description: string | any;
+      order_service_id: string | any;
+    }[]
+  | any;
+
+export default function UpdateOrderStatusDialog({
+  progress_entries,
+}: progressEntriesType) {
   const [isPending, startTransition] = useTransition();
   const [dialogIsOpen, setDialogIsOpen] = useState(false);
   const { addProgress } = useProgressEntries();
-
-  const updateProgressSchema = z.object({
-    progress_name: z.string(),
-    progress_description: z.string(),
-    order_service_id: z.string(),
-  });
-
-  const progressCollection = {
+  const progressCollection: any = {
     created: {
       progress_name: "Created",
       description: "The service request is created and logged into the system.",
@@ -62,33 +66,39 @@ export default function UpdateOrderStatusDialog({ progress_entries }: any) {
     },
   };
 
+  const nextProgress: progressEntriesType =
+    progressCollection[
+      Object.keys(progressCollection)[progress_entries.length]
+    ];
+
+  const updateProgressSchema = z.object({
+    progress_name: z.string(),
+    progress_description: z.string(),
+    order_service_id: z.string(),
+  });
+
   const form = useForm<z.infer<typeof updateProgressSchema>>({
     resolver: zodResolver(updateProgressSchema),
     defaultValues: {
-      progress_name:
-        progress_entries.length === 1
-          ? progressCollection.in_progress.progress_name
-          : progress_entries.length === 2
-          ? progressCollection.quality_checks.progress_name
-          : progress_entries.length === 3
-          ? progressCollection.ready_for_pickup.progress_name
-          : progress_entries.length === 4
-          ? progressCollection.completed.progress_name
-          : "",
-
-      progress_description:
-        progress_entries.length === 1
-          ? progressCollection.in_progress.description
-          : progress_entries.length === 2
-          ? progressCollection.quality_checks.description
-          : progress_entries.length === 3
-          ? progressCollection.ready_for_pickup.description
-          : progress_entries.length === 4
-          ? progressCollection.completed.description
-          : "",
-      order_service_id: progress_entries[0]?.order_service_id,
+      progress_name: nextProgress.progress_name,
+      progress_description: nextProgress.description,
+      order_service_id: progress_entries[0].order_service_id,
     },
   });
+  form.setValue("progress_name", nextProgress.progress_name);
+  form.setValue("progress_description", nextProgress.description);
+  form.setValue("order_service_id", progress_entries[0].order_service_id);
+
+  useEffect(() => {
+    form.setValue("progress_name", nextProgress.progress_name);
+    form.setValue("progress_description", nextProgress.description);
+    form.setValue("order_service_id", progress_entries[0].order_service_id);
+  }, [
+    progress_entries,
+    form,
+    nextProgress.progress_name,
+    nextProgress.description,
+  ]);
 
   async function onSubmit(data: any) {
     startTransition(async () => {
@@ -102,9 +112,9 @@ export default function UpdateOrderStatusDialog({ progress_entries }: any) {
         });
         return;
       }
-      sonner("✨ Success", {
-        description: `Progress updated!`,
-      });
+      form.setValue("progress_name", nextProgress.progress_name);
+      form.setValue("progress_description", nextProgress.description);
+      form.setValue("order_service_id", progress_entries[0].order_service_id);
       setDialogIsOpen(false);
     });
   }
@@ -124,16 +134,7 @@ export default function UpdateOrderStatusDialog({ progress_entries }: any) {
       <DialogContent className="sm:max-w-[400px] bg-darkComponentBg border border-lightBorder shadow-2xl">
         <DialogHeader>
           <DialogTitle>
-            Next Progress is{" "}
-            {progress_entries.length === 1
-              ? progressCollection.in_progress.progress_name
-              : progress_entries.length === 2
-              ? progressCollection.quality_checks.progress_name
-              : progress_entries.length === 3
-              ? progressCollection.ready_for_pickup.progress_name
-              : progress_entries.length === 4
-              ? progressCollection.completed.progress_name
-              : ""}
+            Next update is {nextProgress?.progress_name}
           </DialogTitle>
           <DialogDescription>
             Are you sure you want to update the status of this order?

@@ -24,10 +24,6 @@ import { Button } from "@/components/ui/button";
 import React, { useEffect, useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 import recieptLogo from "@/images/receipt-logo.svg";
-import { FiBox } from "react-icons/fi";
-import { SiTemporal } from "react-icons/si";
-import { BsBoxes } from "react-icons/bs";
-import { cn } from "@/lib/utils";
 
 export default function OrderContent({ order }: any) {
   const contentToPrint = useRef(null);

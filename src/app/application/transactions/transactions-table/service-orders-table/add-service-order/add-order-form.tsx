@@ -118,7 +118,7 @@ export default function OrderForm({ setDialogOpen }: any) {
       vehicle_type: z.string(),
       car_model: z.string().nullable(),
       car_brand: z.string(),
-      plate_number: z.string(),
+      plate_number: z.string().toUpperCase(),
       color: z.string().nullable(),
       engine_number: z.string().nullable(),
       odo_reading: z.coerce.number().nullable(),

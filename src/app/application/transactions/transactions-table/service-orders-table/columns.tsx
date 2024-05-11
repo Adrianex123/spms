@@ -146,7 +146,7 @@ export const initialState = (branches: any) => {
       header: "Customer",
       cell: ({ row }) => {
         return (
-          <p className="max-w-[110px] 2xl:max-w-[220px] truncate">
+          <p className="max-w-[110px] 2xl:max-w-[220px] truncate ">
             {row.original.customer_first_name} {row.original.customer_last_name}
           </p>
         );
@@ -331,12 +331,16 @@ export const initialState = (branches: any) => {
       },
 
       cell: ({ row }) => {
+        const sortedProgressEntries = row?.original.progress_entries
+          .sort(
+            (a: any, b: any) =>
+              new Date(a.created_at).getTime() -
+              new Date(b.created_at).getTime()
+          )
+          .reverse();
+
         const item = progress.find(
-          (item) =>
-            item.value ===
-            row?.original.progress_entries[
-              row?.original.progress_entries?.length - 1
-            ]?.progress_name
+          (item) => item.value === sortedProgressEntries[0]?.progress_name
         );
 
         if (!item) {

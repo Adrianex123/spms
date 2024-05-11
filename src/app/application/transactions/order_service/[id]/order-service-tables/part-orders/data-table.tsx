@@ -68,15 +68,15 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="w-full flex flex-col justify-between gap-1 ">
+    <div className="w-full flex flex-col justify-between gap-1 bg-darkBg rounded-xl">
       <div className="w-full h-full overflow-hidden">
         <ScrollArea className="w-full relative">
           <Table>
-            <TableHeader className="border-none ">
+            <TableHeader className=" border-none ">
               {table.getHeaderGroups().map((headerGroup) => (
                 <TableRow
                   key={headerGroup.id}
-                  className="border-b-darkBg shadow-sm"
+                  className="border-b-lightBorder shadow-sm"
                 >
                   {headerGroup.headers.map((header) => {
                     return (
@@ -117,11 +117,35 @@ export function DataTable<TData, TValue>({
                     colSpan={columns.length}
                     className="h-24 text-center"
                   >
-                    Products Empty.
+                    Parts Empty.
                   </TableCell>
                 </TableRow>
               )}
             </TableBody>
+            <TableFooter className="bg-transparent border-white/10 border-dashed">
+              <TableRow>
+                <TableCell colSpan={2} className="h-24 font-bold">
+                  Total
+                </TableCell>
+                <TableCell colSpan={1} className="h-24">
+                  <div className="w-full flex gap-4 justify-end place-items-center">
+                    <p className="text-sm truncate text-white font-bold">
+                      ₱{" "}
+                      {data.length > 0
+                        ? data
+                            .reduce(
+                              (acc: any, curr: any) =>
+                                acc + curr.quantity * curr.price,
+                              0
+                            )
+                            .toFixed(2)
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                        : 0}
+                    </p>
+                  </div>
+                </TableCell>
+              </TableRow>
+            </TableFooter>
           </Table>
         </ScrollArea>
       </div>

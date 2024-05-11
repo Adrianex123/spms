@@ -16,10 +16,9 @@ export default function OrderCartOptions({}: {}) {
   );
 
   const productsCart = useSelector(
-    (state: any) => state.orderCart.productsCart
+    (state: any) => state.viewOrderCart.productsCart
   );
-  
-  const partsCart = useSelector((state: any) => state.orderCart.partsCart);
+  const partsCart = useSelector((state: any) => state.viewOrderCart.partsCart);
   const dispatch = useDispatch();
 
   return (

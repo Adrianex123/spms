@@ -72,7 +72,7 @@ export function DataTable<TData, TValue>({
       <div className="w-full h-full overflow-hidden">
         <ScrollArea className="w-full relative">
           <Table>
-            <TableHeader className=" border-none ">
+            <TableHeader className="border-none ">
               {table.getHeaderGroups().map((headerGroup) => (
                 <TableRow
                   key={headerGroup.id}
@@ -117,11 +117,24 @@ export function DataTable<TData, TValue>({
                     colSpan={columns.length}
                     className="h-24 text-center"
                   >
-                    Parts Empty.
+                    Products Empty.
                   </TableCell>
                 </TableRow>
               )}
             </TableBody>
+            <TableFooter className="bg-transparent border-lightBorder">
+              <TableRow className="h-20">
+                <TableCell colSpan={2}>Total</TableCell>
+                <TableCell className="text-right text-md font-bold text-white">
+                  {`₱ ${data
+                    .reduce((acc, item: any) => {
+                      return acc + item.price * item.quantity;
+                    }, 0)
+                    .toFixed(2)
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
+                </TableCell>
+              </TableRow>
+            </TableFooter>
           </Table>
         </ScrollArea>
       </div>

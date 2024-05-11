@@ -3,21 +3,16 @@ import { Button } from "@/components/ui/button";
 
 import { ColumnDef } from "@tanstack/react-table";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { FaMinus, FaPlus } from "react-icons/fa";
-import {
-  decrementProductQuantity,
-  incrementProductQuantity,
-} from "@/redux/slices/orderCartSlice";
 
 type cartItem = {
-  product_id: number;
+  part_id: number;
   name: string;
   description: string;
   image_url: string;
   quantity: number;
   price: number;
   barcode: string;
-  uom_name: string;
+  brand: string;
   status: string;
   created_at: string;
   uoms: any;
@@ -29,7 +24,7 @@ export const initiateColumns = () => {
     {
       id: "name",
       accessorKey: "name",
-      header: "Product",
+      header: "Part",
       cell: ({ row }) => {
         return (
           <div className="flex place-items-between gap-4">
@@ -51,7 +46,7 @@ export const initiateColumns = () => {
                 {`Barcode: ${row.original.barcode}`}
               </p>
               <p className="text-sm max-w-[180px] 2xl:max-w-[200px] truncate text-slate-400">
-                {`UNIT: • ${row.original.uom_name}`}
+                {`BRAND: • ${row.original.brand}`}
               </p>
             </div>
           </div>
@@ -66,7 +61,7 @@ export const initiateColumns = () => {
       cell: ({ row }) => {
         return (
           <div className="w-full flex gap-4 justify-center place-items-center">
-            <p className="text-white font-bold">x {row.original.quantity}</p>
+            <p className="text-white font-regular">x {row.original.quantity}</p>
           </div>
         );
       },
@@ -74,13 +69,15 @@ export const initiateColumns = () => {
     {
       id: "price",
       header: () => {
-        return <div className="w-full text-center">Price</div>;
+        return <div className="w-full text-end">Price</div>;
       },
       cell: ({ row }) => {
         return (
-          <div className="w-full flex gap-4 justify-center place-items-center">
-            <p className="text-sm max-w-[170px] 2xl:max-w-[180px] truncate text-white font-semibold">
-              {`₱ ${row.original.price}`}
+          <div className="w-full flex gap-4 justify-end place-items-center">
+            <p className="text-sm max-w-[170px] 2xl:max-w-[180px] truncate text-white font-regular">
+              {`₱ ${row.original.price
+                .toFixed(2)
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
             </p>
           </div>
         );
