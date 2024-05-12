@@ -16,9 +16,9 @@ export default function SelectDemo({ data }: { data: any }) {
         className="w-full bg-lightComponentBg border-slate-600/50 rounded-lg "
         {...data}
       >
-        <SelectValue className="text-white" placeholder="Select a discount" />
+        <SelectValue className="text-black" placeholder="Select a discount" />
       </SelectTrigger>
-      <SelectContent className="rounded-lg bg-lightComponentBg border-slate-600/50 text-white">
+      <SelectContent className="rounded-lg bg-lightComponentBg border-slate-600/50 text-black">
         <SelectGroup>
           <SelectItem value="0">0%</SelectItem>
           <SelectItem value="5">5%</SelectItem>

@@ -31,7 +31,7 @@ export function DataTableToolbar<TData>({
     <div className="flex w-full items-center justify-between">
       <div className="flex flex-1 items-center space-x-2 flex-wrap gap-y-2">
         <Input
-          className="w-[200px] 2xl:w-[250px] h-10 border-none bg-lightComponentBg rounded-lg text-white placeholder:text-white/40"
+          className="w-[200px] 2xl:w-[250px] h-10 border-none bg-lightComponentBg rounded-lg text-black placeholder:text-black/40"
           placeholder="Find an Order ID"
           value={(table.getColumn("id")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
@@ -57,7 +57,7 @@ export function DataTableToolbar<TData>({
           <Button
             variant="ghost"
             onClick={() => table.resetColumnFilters()}
-            className="h-8 px-2 lg:px-3 hover:bg-applicationPrimary hover:text-white"
+            className="h-8 px-2 lg:px-3 hover:bg-applicationPrimary hover:text-black"
           >
             Reset
             <Cross2Icon className="ml-2 h-4 w-4" />

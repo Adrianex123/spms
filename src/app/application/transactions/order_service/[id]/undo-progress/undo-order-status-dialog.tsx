@@ -78,7 +78,7 @@ export default function UndoOrderStatusDialog({
     <Dialog open={dialogIsOpen} onOpenChange={setDialogIsOpen}>
       <DialogTrigger asChild>
         <span
-          className="flex justify-center place-items-center gap-2 text-white text-xs font-bold cursor-pointer"
+          className="flex justify-center place-items-center gap-2 text-black text-xs font-bold cursor-pointer"
           onClick={() => setDialogIsOpen(true)}
         >
           Undo

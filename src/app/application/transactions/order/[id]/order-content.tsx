@@ -502,13 +502,6 @@ export default function OrderContent({ order }: any) {
                 renderer="img"
               />
             </div>
-            <p className="w-full text-center text-[8px] font-semibold text-black space-mono-regular tracking-tighter">
-              Visit us at
-              <br />{" "}
-              <span className="underline">
-                https://trackxp-sapsc.vercel.app/
-              </span>
-            </p>
           </div>
         </div>
       </div>

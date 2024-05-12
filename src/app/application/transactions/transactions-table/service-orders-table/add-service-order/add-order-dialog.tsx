@@ -22,10 +22,10 @@ export default function OrderDialog() {
           <BsBoxSeam /> Purchase Service
         </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-[1170px] 2xl:max-w-[1570px] bg-darkComponentBg border border-lightBorder shadow-2xl">
+      <DialogContent className="max-w-[1170px] 2xl:max-w-[1570px] bg-white vbg-darkComponentBg border border-lightBorder shadow-2xl">
         <DialogHeader>
           <DialogTitle>New Service Order</DialogTitle>
-          <DialogDescription>
+          <DialogDescription className="bg-white">
             Add a new regular transaction service order
           </DialogDescription>
         </DialogHeader>

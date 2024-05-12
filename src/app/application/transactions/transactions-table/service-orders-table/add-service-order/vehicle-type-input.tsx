@@ -42,11 +42,11 @@ export default function SelectDemo({ data }: { data: any }) {
         {...data}
       >
         <SelectValue
-          className="text-white"
+          className="text-black"
           placeholder="Select a type of vehicle"
         />
       </SelectTrigger>
-      <SelectContent className="rounded-lg bg-lightComponentBg border-slate-600/50 text-white">
+      <SelectContent className="rounded-lg bg-lightComponentBg border-slate-600/50 text-black">
         <SelectGroup>
           {vehicleTypes.map((vehicleType) => (
             <SelectItem

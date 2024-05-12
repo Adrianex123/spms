@@ -207,7 +207,7 @@ export default function OrderContent({ orderService, nextProgress }: any) {
                                 <AvatarFallback className="bg-lightComponentBg text-xs">{`${mechanicData.mechanic.first_name[0]}${mechanicData.mechanic.last_name[0]}`}</AvatarFallback>
                               </Avatar>
                             </TooltipTrigger>
-                            <TooltipContent className="bg-applicationPrimary border-transparent text-white font-bold">
+                            <TooltipContent className="bg-applicationPrimary border-transparent text-black font-bold">
                               {mechanicData.mechanic.first_name}{" "}
                               {mechanicData.mechanic.last_name}
                             </TooltipContent>
@@ -269,7 +269,7 @@ export default function OrderContent({ orderService, nextProgress }: any) {
                       )}
                       key={i}
                     >
-                      <div className="font-sm font-bold text-md text-white mb-1 sm:mb-0">
+                      <div className="font-sm font-bold text-md text-black mb-1 sm:mb-0">
                         {progress.value}
                       </div>
                       <div className="flex flex-col sm:flex-row items-start group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-full before:px-px before:bg-slate-300 sm:before:ml-[1.5rem] before:self-start before:-translate-x-1/2 before:-translate-y-2">
@@ -352,9 +352,6 @@ export default function OrderContent({ orderService, nextProgress }: any) {
                     <div className="w-full flex flex-col gap-1">
                       <h3 className="flex place-items-center gap-1 text-xs font-semibold text-slate-300 ">
                         <MdOutlineConfirmationNumber /> Redeem Code
-                      </h3>
-                      <h3 className="text-xs font-semibold text-slate-400 ml-4">
-                        {data.redeem_code ? data.redeem_code : "Redeemed"}
                       </h3>
                     </div>
                     <div className="w-full flex flex-col gap-1">
@@ -460,7 +457,7 @@ export default function OrderContent({ orderService, nextProgress }: any) {
                           <h3 className="flex place-items-center gap-1 text-xs font-semibold text-slate-300 ">
                             <IoIosBarcode /> Plate Number
                           </h3>
-                          <h3 className="text-lg font-semibold text-white ml-4  ">
+                          <h3 className="text-lg font-semibold text-black ml-4  ">
                             {data.vehicle_entries[0].plate_number}
                           </h3>
                         </div>
@@ -736,9 +733,6 @@ export default function OrderContent({ orderService, nextProgress }: any) {
               <div className="flex justify-between">
                 <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
                   Redeem Code
-                </p>
-                <p className="text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
-                  {data.redeem_code}
                 </p>
               </div>
               <div className="flex justify-between">

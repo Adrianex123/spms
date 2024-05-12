@@ -21,7 +21,7 @@ export default function SelectDemo({ data }: { data: any }) {
           value={data.value}
           className="w-full  border-slate-600/50 rounded-lg "
         >
-          <SelectValue className="text-white" placeholder="Select a unit" />
+          <SelectValue className="text-black" placeholder="Select a unit" />
         </SelectTrigger>
       </FormControl>
       <SelectContent className="rounded-lg border-slate-600/50 text-black">

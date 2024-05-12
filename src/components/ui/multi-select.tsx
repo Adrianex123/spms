@@ -121,7 +121,7 @@ const MultiSelectFormField = React.forwardRef<
             ref={ref}
             {...props}
             onClick={() => setIsPopoverOpen(!isPopoverOpen)}
-            className="flex w-full rounded-md border border-slate-600/50 min-h-9 h-auto items-center justify-between bg-lightComponentBg hover:bg-lightComponentBg hover:text-white group px-2"
+            className="flex w-full rounded-md border border-slate-600/50 min-h-9 h-auto items-center justify-between bg-lightComponentBg hover:bg-lightComponentBg hover:text-black group px-2"
           >
             {selectedValues.length > 0 ? (
               <div className="flex justify-between items-center w-full">
@@ -133,7 +133,7 @@ const MultiSelectFormField = React.forwardRef<
                       <Badge
                         key={value}
                         className={cn(
-                          "bg-applicationPrimary text-white ",
+                          "bg-applicationPrimary text-black ",
                           isAnimating ? "animate-bounce" : "",
                           multiSelectVariants({ variant, className })
                         )}
@@ -175,14 +175,14 @@ const MultiSelectFormField = React.forwardRef<
               </div>
             ) : (
               <div className="flex items-center justify-between w-full mx-auto">
-                <span className="text-sm text-white mx-1">{placeholder}</span>
+                <span className="text-sm text-black mx-1">{placeholder}</span>
                 <ChevronDown className="h-4 cursor-pointer text-muted-foreground mx-1 " />
               </div>
             )}
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className="w-[200px] p-0 border border-slate-600/50 rounded-lg bg-lightComponentBg text-white shadow-xl"
+          className="w-[200px] p-0 border border-slate-600/50 rounded-lg bg-lightComponentBg text-black shadow-xl"
           align="start"
           onEscapeKeyDown={() => setIsPopoverOpen(false)}
           onInteractOutside={(event) => {
@@ -193,7 +193,7 @@ const MultiSelectFormField = React.forwardRef<
         >
           <Command className="bg-lightComponentBg">
             <CommandInput
-              className="text-white"
+              className="text-black"
               placeholder="Search..."
               onKeyDown={handleInputKeyDown}
             />
@@ -228,7 +228,7 @@ const MultiSelectFormField = React.forwardRef<
                         {option.icon && (
                           <option.icon className="mr-2 h-4 w-4 text-muted-foreground" />
                         )}
-                        <span className="text-white">{option.label}</span>
+                        <span className="text-black">{option.label}</span>
                       </CommandItem>
                     );
                   })}
@@ -248,7 +248,7 @@ const MultiSelectFormField = React.forwardRef<
                             pointerEvents: "auto",
                             opacity: 1,
                           }}
-                          className="flex-1 justify-center cursor-pointer text-white"
+                          className="flex-1 justify-center cursor-pointer text-black"
                         >
                           Clear
                         </CommandItem>
@@ -265,7 +265,7 @@ const MultiSelectFormField = React.forwardRef<
                         pointerEvents: "auto",
                         opacity: 1,
                       }}
-                      className="flex-1 justify-center cursor-pointer text-white"
+                      className="flex-1 justify-center cursor-pointer text-black"
                     >
                       Close
                     </CommandItem>
@@ -278,7 +278,7 @@ const MultiSelectFormField = React.forwardRef<
         {animation > 0 && selectedValues.length > 0 && (
           <Sparkles
             className={cn(
-              "cursor-pointer my-2 text-white bg-transparent w-3 h-3",
+              "cursor-pointer my-2 text-black bg-transparent w-3 h-3",
               isAnimating ? "" : "text-muted-foreground"
             )}
             onClick={() => setIsAnimating(!isAnimating)}

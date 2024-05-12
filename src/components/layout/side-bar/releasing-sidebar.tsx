@@ -14,7 +14,7 @@ export default function Sidebar() {
         <div className="flex h-14 items-center border-b border-slate-500 px-4 lg:h-[60px] lg:px-6">
           <Link
             href="/"
-            className="flex items-center gap-2 font-semibold text-white text-lg"
+            className="flex items-center gap-2 font-semibold text-black text-lg"
           >
             <Image src={IconLogo} alt="Logo" className="h-6 w-6 font-bold" />
             <span className="">NORSU SPMS</span>
@@ -33,7 +33,7 @@ export default function Sidebar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="flex items-center gap-3 rounded-lg px-3 py-2 text-white text-2xl font-bold transition-all hover:text-primary"
+                className="flex items-center gap-3 rounded-lg px-3 py-2 text-black text-2xl font-bold transition-all hover:text-primary"
               >
                 <link.icon className="h-5 w-5" />
                 {link.label}

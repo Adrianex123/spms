@@ -40,11 +40,11 @@ export const initiateColumns = (dispatch: any) => {
               <p className="text-xs max-w-[100px] 2xl:max-w-[200px] truncate font-semibold">
                 {row.original.name}
               </p>
-              <p className="text-xs text-white/50">
+              <p className="text-xs text-black/50">
                 Status:
                 <span> {row.original.status}</span>
               </p>
-              <p className="text-xs text-white/50">
+              <p className="text-xs text-black/50">
                 Duration:
                 <span>{row.original.duration}</span>
               </p>
@@ -62,7 +62,7 @@ export const initiateColumns = (dispatch: any) => {
         return (
           <div className="w-full flex gap-4 justify-center place-items-center">
             <Button
-              className="text-xs font-bold rounded-md flex gap-2 hover:text-white transition-all duration-300 px-4 py-2 cursor-pointer bg-transparent hover:bg-red-500 border border-lightBorder hover:border-transparent"
+              className="text-xs font-bold rounded-md flex gap-2 hover:text-black transition-all duration-300 px-4 py-2 cursor-pointer bg-transparent hover:bg-red-500 border border-lightBorder hover:border-transparent"
               type="button"
               onClick={() => {
                 dispatch(removeServiceFromCart(row.original.id));

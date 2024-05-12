@@ -50,7 +50,7 @@ export default function RootLayout({
       <body className={cn("font-montserrat", montserrat.variable)}>
         <Providers>
           <div className="w-full min-h-screen hidden bg-red-400 max-lg:flex justify-center place-items-center">
-            <h1 className="text-2xl text-white">Abrihi sa dakong screen </h1>
+            <h1 className="text-2xl text-black">Abrihi sa dakong screen </h1>
           </div>
           <div className="max-lg:hidden grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr] relative">
             <Sidebar />

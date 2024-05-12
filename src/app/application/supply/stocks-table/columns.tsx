@@ -51,7 +51,7 @@ export const initialState = (uoms?: any) => {
               <Button
                 variant="ghost"
                 size="sm"
-                className="-ml-3 h-8 data-[state=open]:bg-applicationPrimary data-[state=open]:text-white hover:bg-slate-50/40"
+                className="-ml-3 h-8 data-[state=open]:bg-applicationPrimary data-[state=open]:text-black hover:bg-slate-50/40"
               >
                 <span>Name</span>
                 {column.getIsSorted() === "desc" ? (
@@ -144,7 +144,7 @@ export const initialState = (uoms?: any) => {
               <Button
                 variant="ghost"
                 size="sm"
-                className="-ml-3 h-8 data-[state=open]:bg-applicationPrimary data-[state=open]:text-white hover:bg-slate-50/40"
+                className="-ml-3 h-8 data-[state=open]:bg-applicationPrimary data-[state=open]:text-black hover:bg-slate-50/40"
               >
                 <span>Stock</span>
                 {column.getIsSorted() === "desc" ? (
@@ -199,7 +199,7 @@ export const initialState = (uoms?: any) => {
               <Button
                 variant="ghost"
                 size="sm"
-                className="-ml-3 h-8 data-[state=open]:bg-applicationPrimary data-[state=open]:text-white hover:bg-slate-50/40"
+                className="-ml-3 h-8 data-[state=open]:bg-applicationPrimary data-[state=open]:text-black hover:bg-slate-50/40"
               >
                 <span>Status</span>
                 {column.getIsSorted() === "desc" ? (
@@ -255,7 +255,7 @@ export const initialState = (uoms?: any) => {
         const id = row.original.id;
         return (
           <Link
-            className="w-fit py-2 flex place-items-center justify-center text-slate-400 rounded-md px-4 hover:bg-applicationPrimary hover:text-white hover:border-applicationPrimary transition-all duration-300 primary-glow"
+            className="w-fit py-2 flex place-items-center justify-center text-slate-400 rounded-md px-4 hover:bg-applicationPrimary hover:text-black hover:border-applicationPrimary transition-all duration-300 primary-glow"
             href={`/application/stocks/stock/${id}`}
           >
             <FaEye />

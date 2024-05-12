@@ -47,10 +47,10 @@ export const initiateColumns = (dispatch: any, productsCart: any) => {
               <p className="text-xs max-w-[100px] 2xl:max-w-[200px] truncate font-semibold">
                 {row.original.name}
               </p>
-              <p className="text-sx max-w-[120px] 2xl:max-w-[180px] truncate text-white font-bold">
+              <p className="text-sx max-w-[120px] 2xl:max-w-[180px] truncate text-black font-bold">
                 {`₱ ${row.original.price} • ${row.original.uoms.unit_name}`}
               </p>
-              <p className="text-xs max-w-[181px] truncate text-white/50">
+              <p className="text-xs max-w-[181px] truncate text-black/50">
                 Stock:
                 <span
                   className={cn(
@@ -77,7 +77,7 @@ export const initiateColumns = (dispatch: any, productsCart: any) => {
           <div className="w-full flex gap-2 justify-end">
             <Button
               className={cn(
-                "text-xs font-bold rounded-md flex gap-2 hover:text-white transition-all duration-300 px-6 py-2 cursor-pointer",
+                "text-xs font-bold rounded-md flex gap-2 hover:text-black transition-all duration-300 px-6 py-2 cursor-pointer",
                 row.original.stock_quantity === 0
                   ? "bg-red-500"
                   : "bg-applicationPrimary hover:bg-applicationPrimary/70"
@@ -115,7 +115,7 @@ export const initiateColumns = (dispatch: any, productsCart: any) => {
               (product: any) => product.product_id === row.original.id
             ) && (
               <Button
-                className="text-xs font-bold rounded-md flex gap-2 hover:text-white transition-all duration-300 px-4 py-2 cursor-pointer bg-red-500 hover:bg-red-600"
+                className="text-xs font-bold rounded-md flex gap-2 hover:text-black transition-all duration-300 px-4 py-2 cursor-pointer bg-red-500 hover:bg-red-600"
                 type="button"
                 onClick={() => {
                   dispatch(removeProductFromCart(row.original.id));

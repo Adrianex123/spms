@@ -18,7 +18,7 @@ export default function ImageInput({ data }: { data: any }) {
           type="file"
           accept="image/*"
           {...data}
-          className=" text-xs w-fit h-fit bg-transparent border-none file:px-4 file:py-2 text-slate-500 p-0 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-applicationPrimary file:text-white hover:file:bg-white hover:file:text-black cursor-pointer file:hover:cursor-pointer file:transition-all file:duration-300"
+          className=" text-xs w-fit h-fit bg-transparent border-none file:px-4 file:py-2 text-slate-500 p-0 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-applicationPrimary file:text-black hover:file:bg-white hover:file:text-black cursor-pointer file:hover:cursor-pointer file:transition-all file:duration-300"
         />
       </div>
     </div>

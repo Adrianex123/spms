@@ -43,7 +43,7 @@ export default function DeleteEmployeeDialog({ department }: any) {
       toast({
         description: (
           <pre className="mt-2 min-w-[340px] max-width-[840px] rounded-md border border-lightBorder bg-slate-950 p-4">
-            <code className="text-white">Successfuly! Deleted</code>
+            <code className="text-black">Successfuly! Deleted</code>
           </pre>
         ),
       });

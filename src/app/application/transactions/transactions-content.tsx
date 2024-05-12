@@ -13,6 +13,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PiGearSixBold } from "react-icons/pi";
 import { BsBoxSeam } from "react-icons/bs";
 import { useSelector } from "react-redux";
+import { VscGitPullRequestGoToChanges } from "react-icons/vsc";
 
 export default function InventoryContent({
   dataOrders,
@@ -28,7 +29,7 @@ export default function InventoryContent({
       defaultValue="orders"
       className="w-full flex max-w-[1840px] flex-col justify-center place-items-center gap-4"
     >
-      <div className="w-full flex justify-between">
+      <div className="w-full flex justify-between  px-2 ">
         <TabsList className="h-fit bg-darkComponentBg border border-lightBorder rounded-lg gap-2">
           <TabsTrigger
             value="orders"
@@ -36,8 +37,7 @@ export default function InventoryContent({
             data-[state=inactive]:hover:text-white/60
             data-[state=active]:text-white rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
           >
-            <BsBoxSeam />
-            Purchase Orders
+            Request Items
           </TabsTrigger>
           <TabsTrigger
             value="order_service"

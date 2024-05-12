@@ -30,7 +30,7 @@ export default function DatePickerWithRange({
             id="date"
             variant={"outline"}
             className={cn(
-              "min-w-[200px] justify-start text-left font-normal bg-lightComponentBg border-lightBorder text-white/80 rounded-lg h-10 px-4 hover:bg-lightComponentBgHover hover:text-white/100",
+              "min-w-[200px] justify-start text-left font-normal bg-lightComponentBg border-lightBorder text-black/80 rounded-lg h-10 px-4 hover:bg-lightComponentBgHover hover:text-black/100",
               !date && "text-muted-foreground"
             )}
           >
@@ -60,7 +60,7 @@ export default function DatePickerWithRange({
             selected={date}
             onSelect={setDate}
             numberOfMonths={2}
-            className="text-white bg-lightComponentBg border-slate-600/50"
+            className="text-black bg-lightComponentBg border-slate-600/50"
           />
         </PopoverContent>
       </Popover>

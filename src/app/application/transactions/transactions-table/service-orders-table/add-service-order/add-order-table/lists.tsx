@@ -9,6 +9,7 @@ import { initiateColumns as initiatePartsColumns } from "./parts-options/columns
 import { initiateColumns as initiateServicesColumns } from "./services-options/columns";
 import { useSelector, useDispatch } from "react-redux";
 import { FaHandsHelping } from "react-icons/fa";
+import { FaCartPlus } from "react-icons/fa";
 
 export default function OrderCartOptions({}: {}) {
   const productsOption = useSelector(
@@ -40,17 +41,17 @@ export default function OrderCartOptions({}: {}) {
           <TabsTrigger
             value="products"
             className="data-[state=active]:bg-applicationPrimary data-[state=inactive]:hover:bg-applicationPrimary/80
-            data-[state=inactive]:hover:text-white/60
-            data-[state=active]:text-white rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
+            data-[state=inactive]:hover:text-black/60
+            data-[state=active]:text-black rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
           >
-            <BsBoxSeam />
-            Products
+            <FaCartPlus />
+            Supplies
           </TabsTrigger>
           <TabsTrigger
             value="parts"
             className="data-[state=active]:bg-applicationPrimary data-[state=inactive]:hover:bg-applicationPrimary/80
-            data-[state=inactive]:hover:text-white/80
-            data-[state=active]:text-white rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
+            data-[state=inactive]:hover:text-black/80
+            data-[state=active]:text-black rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
           >
             <PiGearSixBold />
             Parts
@@ -58,8 +59,8 @@ export default function OrderCartOptions({}: {}) {
           <TabsTrigger
             value="services"
             className="data-[state=active]:bg-applicationPrimary data-[state=inactive]:hover:bg-applicationPrimary/80
-            data-[state=inactive]:hover:text-white/80
-            data-[state=active]:text-white rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
+            data-[state=inactive]:hover:text-black/80
+            data-[state=active]:text-black rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
           >
             <FaHandsHelping />
             Services

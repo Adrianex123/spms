@@ -121,7 +121,7 @@ export default function OrderForm({ setDialogOpen }: any) {
       total_price: 0,
       discount: "0",
       tax: 0,
-      inventory_id: currentUser.branches.id.toString(),
+      inventory_id: 0, // currentUser.branches.id.toString(),
     },
   });
 
@@ -234,7 +234,7 @@ export default function OrderForm({ setDialogOpen }: any) {
               <Accordion
                 type="multiple"
                 className="w-full rounded-none relative"
-                defaultValue={["item-1", "item-2", "item-3"]}
+                defaultValue={["item-1", "item-2", "item-3", "item-4"]}
               >
                 <AccordionItem value="item-1">
                   <AccordionTrigger className="font-bold bg-darkBg sticky top-0">

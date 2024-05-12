@@ -6,6 +6,7 @@ import { DataTable as PartsOptionsDataTable } from "./parts-options/data-table";
 import { initiateColumns as initiateProductsColumns } from "./products-options/columns";
 import { initiateColumns as initiatePartsColumns } from "./parts-options/columns";
 import { useSelector, useDispatch } from "react-redux";
+import { FaCartPlus } from "react-icons/fa";
 
 export default function OrderCartOptions({}: {}) {
   const productsOption = useSelector(
@@ -18,7 +19,7 @@ export default function OrderCartOptions({}: {}) {
   const productsCart = useSelector(
     (state: any) => state.orderCart.productsCart
   );
-  
+
   const partsCart = useSelector((state: any) => state.orderCart.partsCart);
   const dispatch = useDispatch();
 
@@ -35,8 +36,8 @@ export default function OrderCartOptions({}: {}) {
             data-[state=inactive]:hover:text-white/60
             data-[state=active]:text-white rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
           >
-            <BsBoxSeam />
-            Products
+            <FaCartPlus />
+            Supplies
           </TabsTrigger>
           <TabsTrigger
             value="parts"

@@ -66,7 +66,7 @@ export const initiateColumns = () => {
       cell: ({ row }) => {
         return (
           <div className="w-full flex gap-4 justify-center place-items-center">
-            <p className="text-white font-regular">x {row.original.quantity}</p>
+            <p className="text-black font-regular">x {row.original.quantity}</p>
           </div>
         );
       },
@@ -79,7 +79,7 @@ export const initiateColumns = () => {
       cell: ({ row }) => {
         return (
           <div className="w-full flex gap-4 justify-end place-items-center">
-            <p className="text-sm max-w-[170px] 2xl:max-w-[180px] truncate text-white font-regular">
+            <p className="text-sm max-w-[170px] 2xl:max-w-[180px] truncate text-black font-regular">
               {`₱ ${row.original.price
                 .toFixed(2)
                 .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}

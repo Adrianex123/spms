@@ -11,7 +11,7 @@ export default function Sidebar() {
   // Example usage:
 
   return (
-    <div className="hidden border-r md:block bg-blue-900 sticky top-0 left-0">
+    <div className="hidden border-r md:block bg-applicationPrimary sticky top-0 left-0">
       <div className="flex h-full max-h-screen flex-col gap-2">
         <div className="flex h-14 items-center border-b border-slate-500 px-4 lg:h-[60px] lg:px-6">
           <Link
@@ -23,9 +23,9 @@ export default function Sidebar() {
           </Link>
           <Button
             size="icon"
-            className="ml-auto h-8 w-8 bg-blue-900 hover:bg-white group border border-white"
+            className="ml-auto h-8 w-8 bg-applicationPrimary hover:bg-white group border border-white"
           >
-            <Bell className="h-4 w-4 group-hover:text-black" />
+            <Bell className="h-4 w-4 group-hover:text-white" />
             <span className="sr-only">Toggle notifications</span>
           </Button>
         </div>

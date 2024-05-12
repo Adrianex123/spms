@@ -36,9 +36,9 @@ export default function SelectDemo({ data }: { data: any }) {
         className="w-full bg-lightComponentBg border-slate-600/50 rounded-lg "
         {...data}
       >
-        <SelectValue className="text-white" placeholder="Select a Supervisor" />
+        <SelectValue className="text-black" placeholder="Select a Supervisor" />
       </SelectTrigger>
-      <SelectContent className="rounded-lg bg-lightComponentBg border-slate-600/50 text-white">
+      <SelectContent className="rounded-lg bg-lightComponentBg border-slate-600/50 text-black">
         <SelectGroup>
           {allSupervisors.map((supervisor: any) => (
             <SelectItem key={supervisor.value} value={supervisor.value}>

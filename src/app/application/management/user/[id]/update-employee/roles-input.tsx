@@ -34,7 +34,7 @@ export default function SelectDemo({ data, rolesData }: any) {
           value={data.value}
         >
           <SelectValue
-            className="text-white"
+            className="text-black"
             placeholder={data ? findRoleById(data.value) : "Select a role"}
           />
         </SelectTrigger>

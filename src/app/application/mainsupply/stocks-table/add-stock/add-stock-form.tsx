@@ -170,7 +170,7 @@ export default function StockForm({ setDialogOpen }: any) {
                                 );
                               }}
                             >
-                              <FiMinus className="group-hover:text-white" />
+                              <FiMinus className="group-hover:text-black" />
                             </div>
                             <FormControl>
                               <Input
@@ -189,7 +189,7 @@ export default function StockForm({ setDialogOpen }: any) {
                                 );
                               }}
                             >
-                              <IoMdAdd className="group-hover:text-white" />
+                              <IoMdAdd className="group-hover:text-black" />
                             </div>
                           </div>
                           <FormMessage />

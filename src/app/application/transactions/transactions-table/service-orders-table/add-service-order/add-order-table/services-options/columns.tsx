@@ -45,7 +45,7 @@ export const initiateColumns = (dispatch: any, servicesCart: any) => {
               <p className="text-xs max-w-[100px] 2xl:max-w-[200px] truncate font-semibold">
                 {row.original.name}
               </p>
-              <p className="text-xs text-white/50">
+              <p className="text-xs text-black/50">
                 Status:
                 <span
                   className={cn(
@@ -57,7 +57,7 @@ export const initiateColumns = (dispatch: any, servicesCart: any) => {
                   {row.original.status}
                 </span>
               </p>
-              <p className="text-xs text-white/50">
+              <p className="text-xs text-black/50">
                 {`Duration: ${row.original.duration} mins`}
               </p>
             </div>
@@ -75,7 +75,7 @@ export const initiateColumns = (dispatch: any, servicesCart: any) => {
           <div className="w-full flex gap-2 justify-end">
             <Button
               className={cn(
-                "text-xs font-bold rounded-md flex gap-2 hover:text-white transition-all duration-300 px-6 py-2 cursor-pointer",
+                "text-xs font-bold rounded-md flex gap-2 hover:text-black transition-all duration-300 px-6 py-2 cursor-pointer",
                 row.original.status === "Unavailable"
                   ? "bg-red-500"
                   : "bg-applicationPrimary hover:bg-applicationPrimary/70"
@@ -112,7 +112,7 @@ export const initiateColumns = (dispatch: any, servicesCart: any) => {
               (service: any) => service.id === row.original.id
             ) && (
               <Button
-                className="text-xs font-bold rounded-md flex gap-2 hover:text-white transition-all duration-300 px-4 py-2 cursor-pointer bg-red-500 hover:bg-red-600"
+                className="text-xs font-bold rounded-md flex gap-2 hover:text-black transition-all duration-300 px-4 py-2 cursor-pointer bg-red-500 hover:bg-red-600"
                 type="button"
                 onClick={() => {
                   dispatch(removeServiceFromCart(row.original.id));

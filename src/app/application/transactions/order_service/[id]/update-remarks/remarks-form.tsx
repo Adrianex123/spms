@@ -74,7 +74,7 @@ export default function RemarksForm({ props, setDialogIsOpen }: any) {
               <FormControl>
                 <Textarea
                   placeholder="Notes about this vehicle..."
-                  className="resize-none bg-lightBorder border border-lightBorder text-sm text-white rounded-lg p-2 w-full h-32"
+                  className="resize-none bg-lightBorder border border-lightBorder text-sm text-black rounded-lg p-2 w-full h-32"
                   {...field}
                   value={field.value || ""}
                 />

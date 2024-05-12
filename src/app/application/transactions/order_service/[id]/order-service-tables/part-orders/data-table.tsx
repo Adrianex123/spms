@@ -129,7 +129,7 @@ export function DataTable<TData, TValue>({
                 </TableCell>
                 <TableCell colSpan={1} className="h-24">
                   <div className="w-full flex gap-4 justify-end place-items-center">
-                    <p className="text-sm truncate text-white font-bold">
+                    <p className="text-sm truncate text-black font-bold">
                       ₱{" "}
                       {data.length > 0
                         ? data

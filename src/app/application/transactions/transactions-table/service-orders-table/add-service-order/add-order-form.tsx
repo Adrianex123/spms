@@ -191,7 +191,7 @@ export default function OrderForm({ setDialogOpen }: any) {
       total_price: 0,
       discount: "0",
       tax: 0,
-      inventory_id: currentUser.branches.id.toString(),
+      // inventory_id:0 currentUser.branches.id.toString(),
       progress_entries: [
         {
           progress_name: "Created",
@@ -343,7 +343,7 @@ export default function OrderForm({ setDialogOpen }: any) {
       //   title: "You submitted the following values:",
       //   description: (
       //     <pre className="mt-2 w-[1340px] h-[600px] rounded-md bg-slate-950 p-4 overflow-y-scroll">
-      //       <code className="text-white">{JSON.stringify(data, null, 2)}</code>
+      //       <code className="text-black">{JSON.stringify(data, null, 2)}</code>
       //     </pre>
       //   ),
       // });
@@ -364,7 +364,7 @@ export default function OrderForm({ setDialogOpen }: any) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col gap-5"
+        className="flex flex-col gap-5 bg-white"
       >
         <div className="w-full flex justify-between gap-4">
           <div className="w-[60%] 2xl:w-[50%] h-full rounded-lg overflow-hidden">

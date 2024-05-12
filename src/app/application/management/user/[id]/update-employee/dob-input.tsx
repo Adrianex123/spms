@@ -24,7 +24,7 @@ export default function SampleDatePicker({ data }: { data: any }) {
           {data.value ? (
             format(data.value, "PPP")
           ) : (
-            <span className="text-white/35">Pick a date</span>
+            <span className="text-black/35">Pick a date</span>
           )}
         </Button>
       </PopoverTrigger>

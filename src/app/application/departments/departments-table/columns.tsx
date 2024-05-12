@@ -29,7 +29,7 @@ export const initateColumns = (departments: any) => {
               <Button
                 variant="ghost"
                 size="sm"
-                className="-ml-3 h-8 data-[state=open]:bg-applicationPrimary data-[state=open]:text-white hover:bg-slate-50/40"
+                className="-ml-3 h-8 data-[state=open]:bg-applicationPrimary data-[state=open]:text-black hover:bg-slate-50/40"
               >
                 <span>Name</span>
                 {column.getIsSorted() === "desc" ? (
@@ -104,7 +104,7 @@ export const initateColumns = (departments: any) => {
         const id = row.original.id;
         return (
           <Link
-            className="w-fit py-2 flex place-items-center justify-center text-slate-400 rounded-sm px-4 hover:bg-applicationPrimary hover:text-white hover:border-applicationPrimary transition-all duration-300 "
+            className="w-fit py-2 flex place-items-center justify-center text-slate-400 rounded-sm px-4 hover:bg-applicationPrimary hover:text-black hover:border-applicationPrimary transition-all duration-300 "
             href={`/application/admin/departments/department/${id}`}
           >
             View

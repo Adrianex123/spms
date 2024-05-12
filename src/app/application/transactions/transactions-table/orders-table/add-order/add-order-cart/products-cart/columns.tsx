@@ -44,7 +44,7 @@ export const initiateColumns = (dispatch: any, productsDataOptions: any) => {
               <p className="text-md max-w-[200px] 2xl:max-w-[200px] truncate text-slate-50 font-bold">
                 {row.original.name}
               </p>
-              <p className="text-sm max-w-[170px] 2xl:max-w-[180px] truncate text-white font-semibold">
+              <p className="text-sm max-w-[170px] 2xl:max-w-[180px] truncate text-black font-semibold">
                 {`₱ ${row.original.price} • ${row.original.uom_name}`}
               </p>
               <p className="text-sm max-w-[120px] 2xl:max-w-[140px] truncate text-slate-400">
@@ -64,7 +64,7 @@ export const initiateColumns = (dispatch: any, productsDataOptions: any) => {
         return (
           <div className="w-full flex gap-4 justify-center place-items-center">
             <Button
-              className="text-xs font-bold rounded-md flex gap-2 hover:text-white transition-all duration-300 px-4 py-2 cursor-pointer bg-transparent hover:bg-applicationPrimary border border-lightBorder hover:border-transparent"
+              className="text-xs font-bold rounded-md flex gap-2 hover:text-black transition-all duration-300 px-4 py-2 cursor-pointer bg-transparent hover:bg-applicationPrimary border border-lightBorder hover:border-transparent"
               type="button"
               onClick={() => {
                 dispatch(decrementProductQuantity(row.original.product_id));
@@ -72,9 +72,9 @@ export const initiateColumns = (dispatch: any, productsDataOptions: any) => {
             >
               <FaMinus />
             </Button>
-            <p className="text-white font-bold">{row.original.quantity}</p>
+            <p className="text-black font-bold">{row.original.quantity}</p>
             <Button
-              className="text-xs font-bold rounded-md flex gap-2 hover:text-white transition-all duration-300 px-4 py-2 cursor-pointer bg-transparent hover:bg-applicationPrimary border border-lightBorder hover:border-transparent"
+              className="text-xs font-bold rounded-md flex gap-2 hover:text-black transition-all duration-300 px-4 py-2 cursor-pointer bg-transparent hover:bg-applicationPrimary border border-lightBorder hover:border-transparent"
               type="button"
               disabled={
                 productsDataOptions.find(
@@ -98,7 +98,7 @@ export const initiateColumns = (dispatch: any, productsDataOptions: any) => {
       },
       cell: ({ row }) => {
         return (
-          <div className="w-full flex min-w-[150px] gap-2 justify-end text-white font-bold">
+          <div className="w-full flex min-w-[150px] gap-2 justify-end text-black font-bold">
             ₱{" "}
             {(row.original.price * row.original.quantity)
               .toFixed(2)

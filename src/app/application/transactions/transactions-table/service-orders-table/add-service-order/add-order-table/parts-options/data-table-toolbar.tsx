@@ -25,7 +25,7 @@ export function DataTableToolbar<TData>({
     <div className="flex w-full items-center justify-between">
       <div className="flex flex-1 items-center space-x-2 flex-wrap gap-y-2">
         <Input
-          className="w-[150px] 2xl:w-[200px] h-10 bg-darkBg rounded-lg text-white border border-lightBorder placeholder:text-white/40 m-3"
+          className="w-[150px] 2xl:w-[200px] h-10 bg-darkBg rounded-lg text-black border border-lightBorder placeholder:text-black/40 m-3"
           placeholder="Find Part"
           value={(table.getColumn("name")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
@@ -36,7 +36,7 @@ export function DataTableToolbar<TData>({
           <Button
             variant="ghost"
             onClick={() => table.resetColumnFilters()}
-            className="h-8 px-2 lg:px-3 hover:bg-applicationPrimary hover:text-white"
+            className="h-8 px-2 lg:px-3 hover:bg-applicationPrimary hover:text-black"
           >
             Reset
             <Cross2Icon className="ml-2 h-4 w-4" />
@@ -49,7 +49,7 @@ export function DataTableToolbar<TData>({
           variant="ghost"
           type="button"
           onClick={() => dispatch(resetOrderCart())}
-          className="h-8 px-2 lg:px-3 hover:bg-red-500 hover:text-white text-xs m-3"
+          className="h-8 px-2 lg:px-3 hover:bg-red-500 hover:text-black text-xs m-3"
         >
           Reset
         </Button>

@@ -21,10 +21,10 @@ export default function SelectDemo({ data }: { data: any }) {
           value={data.value}
           className="w-full bg-lightComponentBg border-slate-600/50 rounded-lg "
         >
-          <SelectValue className="text-white" placeholder="Select a unit" />
+          <SelectValue className="text-black" placeholder="Select a unit" />
         </SelectTrigger>
       </FormControl>
-      <SelectContent className="rounded-lg bg-lightComponentBg border-slate-600/50 text-white">
+      <SelectContent className="rounded-lg bg-lightComponentBg border-slate-600/50 text-black">
         <SelectGroup>
           {uomsData.map((uom: any) => (
             <SelectItem key={uom.id} value={uom.id.toString()}>

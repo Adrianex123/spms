@@ -31,8 +31,8 @@ export default function OrderCartOptions({}: {}) {
           <TabsTrigger
             value="products"
             className="data-[state=active]:bg-applicationPrimary data-[state=inactive]:hover:bg-applicationPrimary/80
-            data-[state=inactive]:hover:text-white/60
-            data-[state=active]:text-white rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
+            data-[state=inactive]:hover:text-black/60
+            data-[state=active]:text-black rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
           >
             <BsBoxSeam />
             Products
@@ -40,8 +40,8 @@ export default function OrderCartOptions({}: {}) {
           <TabsTrigger
             value="parts"
             className="data-[state=active]:bg-applicationPrimary data-[state=inactive]:hover:bg-applicationPrimary/80
-            data-[state=inactive]:hover:text-white/80
-            data-[state=active]:text-white rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
+            data-[state=inactive]:hover:text-black/80
+            data-[state=active]:text-black rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
           >
             <PiGearSixBold />
             Parts

@@ -17,11 +17,11 @@ export default function SelectDemo({ data }: { data: any }) {
         {...data}
       >
         <SelectValue
-          className="text-white"
+          className="text-black"
           placeholder="Select a Payment Method"
         />
       </SelectTrigger>
-      <SelectContent className="rounded-lg bg-lightComponentBg border-slate-600/50 text-white">
+      <SelectContent className="rounded-lg bg-lightComponentBg border-slate-600/50 text-black">
         <SelectGroup>
           <SelectItem value="Cash">Cash</SelectItem>
           <SelectItem value="Card (Online)">Card (Online)</SelectItem>

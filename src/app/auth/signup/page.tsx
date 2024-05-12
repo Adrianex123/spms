@@ -50,7 +50,7 @@ export default function Login() {
       toast({
         description: (
           <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-            <code className="text-white">Login Successful</code>
+            <code className="text-black">Login Successful</code>
           </pre>
         ),
       });
@@ -82,7 +82,7 @@ export default function Login() {
                           title="email"
                           type="text"
                           placeholder="Enter your email"
-                          className="w-full text-sm px-5 py-2.5 rounded-md bg-foregroundBg text-white border border-lightBorder "
+                          className="w-full text-sm px-5 py-2.5 rounded-md bg-foregroundBg text-black border border-lightBorder "
                           {...field}
                         />
                       </FormControl>
@@ -102,7 +102,7 @@ export default function Login() {
                         <input
                           type="password"
                           placeholder="••••••••••"
-                          className="w-full text-sm px-5 py-2.5 rounded-md bg-foregroundBg text-white border border-lightBorder "
+                          className="w-full text-sm px-5 py-2.5 rounded-md bg-foregroundBg text-black border border-lightBorder "
                           {...field}
                         />
                       </FormControl>
@@ -114,7 +114,7 @@ export default function Login() {
             </div>
             <Button
               type="submit"
-              className="w-full flex gap-4 text-white text-sm px-5 py-2.5 text-center  bg-applicationPrimary hover:bg-applicationPrimary/70 font-bold rounded-lg transition-all duration-300 "
+              className="w-full flex gap-4 text-black text-sm px-5 py-2.5 text-center  bg-applicationPrimary hover:bg-applicationPrimary/70 font-bold rounded-lg transition-all duration-300 "
             >
               <span className={cn({ hidden: isPending })}>Signup</span>
               <AiOutlineLoading3Quarters

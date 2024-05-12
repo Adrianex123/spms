@@ -24,7 +24,7 @@ export function DataTablePagination<TData>({
 }: DataTablePaginationProps<TData>) {
   return (
     <div className="flex items-center justify-between px-2">
-      {/* <span className="text-xs font-light">Custom made with 💓 by Nekuso </span> */}
+      {/* <span className="text-xs font-light">Custom  with 💓 by Nekuso </span> */}
       <span className="text-xs font-light">
         {table.getFilteredRowModel().rows.length} results{" "}
       </span>
@@ -42,10 +42,7 @@ export function DataTablePagination<TData>({
             </SelectTrigger>
             <SelectContent side="top" className="bg-lightBorder shadow-2xl">
               {[10, 20, 30, 40, 50].map((pageSize) => (
-                <SelectItem
-                  key={pageSize}
-                  value={`${pageSize}`}
-                >
+                <SelectItem key={pageSize} value={`${pageSize}`}>
                   {pageSize}
                 </SelectItem>
               ))}

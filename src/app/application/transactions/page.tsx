@@ -168,7 +168,7 @@ export default function Transactions() {
   return (
     <div className="w-full flex justify-center py-3.5 no-scrollbar ">
       {/* {ordersData.length === 0 && orderServicesData.length === 0 ? (
-        <Loading />
+        <Loading /> 
       ) : ( */}
       <TransactionsContent
         dataOrders={ordersData}

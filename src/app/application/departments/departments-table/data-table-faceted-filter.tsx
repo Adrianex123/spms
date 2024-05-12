@@ -44,7 +44,7 @@ export function DataTableFacetedFilter<TData, TValue>({
         <Button
           variant="outline"
           size="sm"
-          className="h-9 border border-slate-600 bg-transparent hover:bg-applicationPrimary hover:text-white"
+          className="h-9 border border-slate-600 bg-transparent hover:bg-applicationPrimary hover:text-black"
         >
           <CaretSortIcon className="mr-2 h-4 w-4" />
           {title}
@@ -72,7 +72,7 @@ export function DataTableFacetedFilter<TData, TValue>({
                       <Badge
                         variant="secondary"
                         key={option.value}
-                        className="rounded-sm px-1 font-normal bg-applicationPrimary text-white hover:bg-white hover:text-black"
+                        className="rounded-sm px-1 font-normal bg-applicationPrimary text-black hover:bg-white hover:text-black"
                       >
                         {option.label}
                       </Badge>

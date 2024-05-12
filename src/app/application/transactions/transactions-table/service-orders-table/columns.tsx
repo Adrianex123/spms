@@ -91,7 +91,7 @@ export const initialState = (branches: any) => {
               <Button
                 variant="ghost"
                 size="sm"
-                className="-ml-3 h-8 data-[state=open]:bg-applicationPrimary data-[state=open]:text-white hover:bg-slate-50/40 hover:text-white"
+                className="-ml-3 h-8 data-[state=open]:bg-applicationPrimary data-[state=open]:text-black hover:bg-slate-50/40 hover:text-black"
               >
                 <span>Order ID</span>
                 {column.getIsSorted() === "desc" ? (
@@ -109,16 +109,16 @@ export const initialState = (branches: any) => {
             >
               <DropdownMenuItem
                 onClick={() => column.toggleSorting(false)}
-                className="hover:bg-applicationPrimary  text-white group"
+                className="hover:bg-applicationPrimary  text-black group"
               >
-                <ArrowUpIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70 group-hover:text-white" />
+                <ArrowUpIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70 group-hover:text-black" />
                 Asc
               </DropdownMenuItem>
               <DropdownMenuItem
                 onClick={() => column.toggleSorting(true)}
-                className="hover:bg-applicationPrimary text-white group"
+                className="hover:bg-applicationPrimary text-black group"
               >
-                <ArrowDownIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70 group-hover:text-white" />
+                <ArrowDownIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70 group-hover:text-black" />
                 Desc
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -132,7 +132,7 @@ export const initialState = (branches: any) => {
               <p className="max-w-[190px] 2xl:max-w-[220px] truncate font-semibold">
                 {row.original.id}
               </p>
-              <p className="max-w-[181px] truncate text-white/50">
+              <p className="max-w-[181px] truncate text-black/50">
                 {format(row.original.created_at, "PPPP")}
               </p>
             </div>
@@ -173,7 +173,7 @@ export const initialState = (branches: any) => {
                 {row.original.supervisor.first_name}{" "}
                 {row.original.supervisor.last_name}
               </p>
-              <p className="max-w-[181px] truncate text-white/50">
+              <p className="max-w-[181px] truncate text-black/50">
                 {row.original.supervisor.roles.role}
               </p>
             </div>
@@ -185,7 +185,7 @@ export const initialState = (branches: any) => {
       id: "branch",
       accessorKey: "branches",
       accessorFn: (row) => row.inventory.branches.branch_name,
-      header: "Branch",
+      header: "Department",
       cell: ({ row }) => {
         const item = branches?.find(
           (item: any) =>
@@ -214,7 +214,7 @@ export const initialState = (branches: any) => {
             <div className="flex place-items-center gap-1">
               <p
                 className={
-                  "w-fit text-xs flex place-items-center gap-1 truncate text-white bg-applicationPrimary pl-2 pr-1 py-1 rounded-3xl font-semibold"
+                  "w-fit text-xs flex place-items-center gap-1 truncate text-black bg-applicationPrimary pl-2 pr-1 py-1 rounded-3xl font-semibold"
                 }
               >
                 Services
@@ -225,7 +225,7 @@ export const initialState = (branches: any) => {
               <TooltipProvider delayDuration={0} skipDelayDuration={1000}>
                 <Tooltip>
                   <TooltipTrigger>
-                    <span className="rounded-full bg-darkGray text-white p-1 px-2 text-center flex justify-center place-items-center line-clamp-none font-semibold">
+                    <span className="rounded-full bg-darkGray text-black p-1 px-2 text-center flex justify-center place-items-center line-clamp-none font-semibold">
                       {row.original.purchase_services.length > 0 &&
                       row.original.purchase_products.length > 0 &&
                       row.original.purchase_parts.length > 0
@@ -245,7 +245,7 @@ export const initialState = (branches: any) => {
                         }
                       >
                         Products
-                        <span className="rounded-full bg-black text-white p-1 px-3 text-center flex justify-center place-items-center line-clamp-none">
+                        <span className="rounded-full bg-black text-black p-1 px-3 text-center flex justify-center place-items-center line-clamp-none">
                           {row.original.purchase_products.length}
                         </span>
                       </p>
@@ -257,7 +257,7 @@ export const initialState = (branches: any) => {
                         }
                       >
                         Parts
-                        <span className="rounded-full bg-black text-white p-1 px-3 text-center flex justify-center place-items-center line-clamp-none">
+                        <span className="rounded-full bg-black text-black p-1 px-3 text-center flex justify-center place-items-center line-clamp-none">
                           {row.original.purchase_parts.length}
                         </span>
                       </p>
@@ -271,7 +271,7 @@ export const initialState = (branches: any) => {
           return (
             <p
               className={
-                "w-fit text-xs flex place-items-center gap-1 truncate text-white bg-applicationPrimary pl-2 pr-1 py-1 rounded-3xl font-semibold"
+                "w-fit text-xs flex place-items-center gap-1 truncate text-black bg-applicationPrimary pl-2 pr-1 py-1 rounded-3xl font-semibold"
               }
             >
               Services
@@ -295,7 +295,7 @@ export const initialState = (branches: any) => {
               <Button
                 variant="ghost"
                 size="sm"
-                className="-ml-3 h-8 data-[state=open]:bg-applicationPrimary data-[state=open]:text-white hover:bg-slate-50/40 hover:text-white"
+                className="-ml-3 h-8 data-[state=open]:bg-applicationPrimary data-[state=open]:text-black hover:bg-slate-50/40 hover:text-black"
               >
                 <span>Progress</span>
                 {column.getIsSorted() === "desc" ? (
@@ -313,16 +313,16 @@ export const initialState = (branches: any) => {
             >
               <DropdownMenuItem
                 onClick={() => column.toggleSorting(false)}
-                className="hover:bg-applicationPrimary  text-white group"
+                className="hover:bg-applicationPrimary  text-black group"
               >
-                <ArrowUpIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70 group-hover:text-white" />
+                <ArrowUpIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70 group-hover:text-black" />
                 Asc
               </DropdownMenuItem>
               <DropdownMenuItem
                 onClick={() => column.toggleSorting(true)}
-                className="hover:bg-applicationPrimary text-white group"
+                className="hover:bg-applicationPrimary text-black group"
               >
-                <ArrowDownIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70 group-hover:text-white" />
+                <ArrowDownIcon className="mr-2 h-3.5 w-3.5 text-muted-foreground/70 group-hover:text-black" />
                 Desc
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -417,7 +417,7 @@ export const initialState = (branches: any) => {
         const id = row.original.id;
         return (
           <Link
-            className="w-fit py-2 flex place-items-center justify-center text-slate-400 rounded-full px-4 hover:bg-applicationPrimary hover:text-white hover:border-applicationPrimary transition-all duration-300 primary-glow"
+            className="w-fit py-2 flex place-items-center justify-center text-slate-400 rounded-full px-4 hover:bg-applicationPrimary hover:text-black hover:border-applicationPrimary transition-all duration-300 primary-glow"
             href={`/application/transactions/order_service/${id}`}
           >
             <FaEye className="mr-2 " />
