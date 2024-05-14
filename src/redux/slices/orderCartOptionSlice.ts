@@ -14,25 +14,26 @@ const requestCartOptions = createSlice({
       const foodsuppliesStock = action.payload.allFoodSupplies;
       state.foodsuppliesData = foodsuppliesStock;
       console.log(state.foodsuppliesData);
-      // const foodsuppliesCart = action.payload.foodsuppliesCart;
-      // // Update each stock_quantity of productsData on from productsCart
+      const foodsuppliesCart = action.payload.foodsuppliesCart;
+      // Update each stock_quantity of productsData on from productsCart
 
-      // const updatedFoodSuppliesStock = foodsuppliesStock
-      //   ? foodsuppliesStock.map((stockFoodSupply: any) => {
-      //       const cartFoodSupply = foodsuppliesCart.find(
-      //         (foodsupply: any) =>
-      //           foodsupply.foodsupply_id === stockFoodSupply.id
-      //       );
-      //       if (cartFoodSupply) {
-      //         return {
-      //           ...stockFoodSupply,
-      //           stock_quantity:
-      //             stockFoodSupply.stock_quantity - cartFoodSupply.quantity,
-      //         };
-      //       }
-      //       return stockFoodSupply;
-      //     })
-      //   : [];
+      const updatedFoodSuppliesStock = foodsuppliesStock
+        ? foodsuppliesStock.map((stockFoodSupply: any) => {
+            const cartFoodSupply = foodsuppliesCart.find(
+              (foodsupply: any) =>
+                foodsupply.foodsupply_id === stockFoodSupply.id
+            );
+            if (cartFoodSupply) {
+              return {
+                ...stockFoodSupply,
+                stock_quantity:
+                  stockFoodSupply.stock_quantity - cartFoodSupply.quantity,
+              };
+            }
+            return stockFoodSupply;
+          })
+        : [];
+      state.setFoodSuppliesData = updatedFoodSuppliesStock;
     },
     setAllStocksData: (state, action: PayloadAction<any>) => {
       const supplyStock = action.payload.allStocksData;

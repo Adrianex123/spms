@@ -21,7 +21,7 @@ export const initiateColumns = () => {
     {
       id: "name",
       accessorKey: "name",
-      header: "FoodSupply",
+      header: "Food Supply",
       cell: ({ row }) => {
         return (
           <div className="flex place-items-between gap-4">

@@ -76,7 +76,7 @@ export const initiateColumns = (dispatch: any, stocksCart: any) => {
               className={cn(
                 "text-xs font-bold rounded-md flex gap-2 hover:text-white transition-all duration-300 px-6 py-2 cursor-pointer",
                 row.original.stock_quantity === 0
-                  ? "bg-blue-600"
+                  ? "bg-applicationPrimary"
                   : "bg-applicationPrimary hover:bg-applicationPrimary/70"
               )}
               type="button"
@@ -100,7 +100,7 @@ export const initiateColumns = (dispatch: any, stocksCart: any) => {
             >
               <div
                 className={cn(
-                  "rounded-md text-white bg-blue-600 px-4 py-2 text-base",
+                  "rounded-md text-white bg-applicationPrimary px-4 py-2 text-base",
                   stocksCart.some(
                     (equipment: any) => equipment.stocks === row.original.id
                   )

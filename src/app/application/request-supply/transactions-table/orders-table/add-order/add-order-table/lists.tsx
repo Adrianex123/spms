@@ -48,16 +48,6 @@ export default function RequestCartOptions({}: {}) {
             <GiWoodenCrate />
             Supplies
           </TabsTrigger>
-
-          <TabsTrigger
-            value="vehicles"
-            className="data-[state=active]:bg-applicationPrimary data-[state=inactive]:hover:bg-applicationPrimary/80
-            data-[state=inactive]:hover:text-white/80
-            data-[state=active]:text-white rounded-md px-4 py-2 transition-all duration-300 flex gap-2"
-          >
-            <FaAmbulance />
-            Vehicles
-          </TabsTrigger>
         </TabsList>
       </div>
 
