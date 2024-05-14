@@ -25,7 +25,7 @@ export const useFoodSupplies: any = () => {
   };
   const getFoodSupplies = async () => {
     const result = await supabase
-      .from("food_supplies")
+      .from("main_stocks")
       .select(
         `
 *

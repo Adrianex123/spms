@@ -57,12 +57,12 @@ export default function RequestForm({ setDialogOpen }: any) {
   const [minTotalPrice, setMinTotalPrice] = useState(0);
 
   const RequestSchema: any = z.object({
-    requester_first_name: z.string().nullable(),
-    requester_last_name: z.string().nullable(),
-    requester_email: z.string().nullable(),
-    requester_contact_number: z.coerce.number().nullable(),
-    employee_id: z.string(),
-    calamity_type: z.string(),
+    // requester_first_name: z.string().nullable(),
+    // requester_last_name: z.string().nullable(),
+    // requester_email: z.string().nullable(),
+    // requester_contact_number: z.coerce.number().nullable(),
+    // employee_id: z.string(),
+    // calamity_type: z.string(),
 
     use_stocks: z.array(
       z.object({
@@ -75,7 +75,7 @@ export default function RequestForm({ setDialogOpen }: any) {
     ),
     use_foodsupplies: z.array(
       z.object({
-        foodsupplies_id: z.coerce.number(),
+        stocks: z.coerce.number(),
         name: z.string(),
         description: z.string(),
         image: z.string(),
@@ -206,225 +206,8 @@ export default function RequestForm({ setDialogOpen }: any) {
               <Accordion
                 type="multiple"
                 className="w-full rounded-none relative"
-                defaultValue={[
-                  "item-0",
-                  "item-1",
-                  "item-2",
-                  "item-3",
-                  "item-4",
-                ]}
+                defaultValue={["item-1", "item-2", "item-3", "item-4"]}
               >
-                <AccordionItem value="item-0">
-                  <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
-                    requester
-                  </AccordionTrigger>
-                  <AccordionContent className="bg-darkComponentBg rounded-xl">
-                    <div className="w-full flex flex-col gap-4 px-2">
-                      <div className="w-full flex gap-4">
-                        <div className="w-[75%] flex flex-col">
-                          <FormField
-                            control={form.control}
-                            name="requester_first_name"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel className="text-xs">
-                                  First Name
-                                </FormLabel>
-                                <FormControl>
-                                  <Input
-                                    className="rounded-lg bg-lightComponentBg border-slate-600/50"
-                                    {...field}
-                                    type="text"
-                                    placeholder="Enter First Name"
-                                    value={field.value || ""}
-                                  />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-                        <div className="w-[75%] flex flex-col">
-                          <FormField
-                            control={form.control}
-                            name="requester_last_name"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel className="text-xs">
-                                  Last Name
-                                </FormLabel>
-                                <FormControl>
-                                  <Input
-                                    className="rounded-lg bg-lightComponentBg border-slate-600/50"
-                                    {...field}
-                                    type="text"
-                                    placeholder="Enter Last Name"
-                                    value={field.value || ""}
-                                  />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-                        <div className="w-full flex flex-col">
-                          <FormField
-                            control={form.control}
-                            name="requester_contact_number"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel className="text-xs">
-                                  Contact Number
-                                </FormLabel>
-                                <FormControl>
-                                  <Input
-                                    className="rounded-lg bg-lightComponentBg border-slate-600/50 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-                                    {...field}
-                                    accept="number"
-                                    type="number"
-                                    placeholder="#"
-                                    value={field.value || ""}
-                                  />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-                      </div>
-                      <div className="w-full flex gap-4">
-                        <div className="w-[75%] flex flex-col ">
-                          <FormField
-                            control={form.control}
-                            name="requester_email"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel className="text-xs">Email</FormLabel>
-                                <FormControl>
-                                  <Input
-                                    className="rounded-lg bg-lightComponentBg border-slate-600/50"
-                                    {...field}
-                                    type="text"
-                                    placeholder="example@gmail.com"
-                                    value={field.value || ""}
-                                  />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                          {/* <FormField
-                            control={form.control}
-                            name="requester_email"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel className="text-xs">Email</FormLabel>
-                                <BranchInput data={field} />
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          /> */}
-                        </div>
-                        <div className="w-full flex flex-col ">
-                          <FormField
-                            control={form.control}
-                            name="calamityTypes"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel className="text-xs">
-                                  Calamity Types
-                                </FormLabel>
-                                <StatusInput data={field} />
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-                        <div className="w-[75%] flex flex-col ">
-                          {/* <FormField
-                            control={form.control}
-                            name="payment_method"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel className="text-xs">
-                                  Payment
-                                </FormLabel>
-                                <PaymentInput data={field} />
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          /> */}
-                        </div>
-                      </div>
-                      {/* <div className="w-full flex gap-4">
-                        <div className="w-[75%] flex flex-col">
-                          <FormField
-                            control={form.control}
-                            name="requester_email"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel className="text-xs">Email</FormLabel>
-                                <FormControl>
-                                  <Input
-                                    className="rounded-lg bg-lightComponentBg border-slate-600/50"
-                                    {...field}
-                                    type="text"
-                                    placeholder="example@gmail.com"
-                                    value={field.value || ""}
-                                  />
-                                </FormControl>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-                        <div className="w-[75%] flex flex-col ">
-                          <FormField
-                            control={form.control}
-                            name="amount_paid"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel className="text-xs">
-                                  Amount Paid
-                                </FormLabel>
-                                <div className="w-full flex place-items-center rounded-lg bg-lightComponentBg ">
-                                  <div className="h-full px-3 bg-darkBg rounded-tl-lg rounded-bl-lg">
-                                    <TbCurrencyPeso className="h-full w-5 text-center" />
-                                  </div>
-                                  <FormControl>
-                                    <Input
-                                      className="rounded-lg bg-lightComponentBg border-slate-600/50"
-                                      {...field}
-                                      type="number"
-                                      placeholder="Amount"
-                                      value={field.value || ""}
-                                    />
-                                  </FormControl>
-                                </div>
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-                        <div className="w-full flex flex-col ">
-                          <FormField
-                            control={form.control}
-                            name="discount"
-                            render={({ field }) => (
-                              <FormItem>
-                                <FormLabel className="text-xs">
-                                  Discount
-                                </FormLabel>
-                                <DiscountInput data={field} />
-                                <FormMessage />
-                              </FormItem>
-                            )}
-                          />
-                        </div>
-                      </div> */}
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
                 <AccordionItem value="item-1">
                   <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
                     Equipments Summary
@@ -455,24 +238,6 @@ export default function RequestForm({ setDialogOpen }: any) {
                           : []
                       }
                       data={requestCart.foodsuppliesCart}
-                    />
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-3">
-                  <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
-                    Vehicles Summary
-                  </AccordionTrigger>
-                  <AccordionContent className="bg-darkComponentBg rounded-xl">
-                    <VehiclesCart
-                      columns={
-                        requestCartOptions && requestCartOptions.vehiclesData
-                          ? initiateVehiclesCartColumns(
-                              dispatch,
-                              requestCartOptions.vehiclesData
-                            )
-                          : []
-                      }
-                      data={requestCart.vehiclesCart}
                     />
                   </AccordionContent>
                 </AccordionItem>
