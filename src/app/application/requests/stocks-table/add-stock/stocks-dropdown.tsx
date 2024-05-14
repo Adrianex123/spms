@@ -16,8 +16,8 @@ export default function SelectDemo({ data }: { data: any }) {
     <Select onValueChange={data.onChange} value={data.value}>
       <FormControl>
         <SelectTrigger
-          id="main_stocks_id"
-          name="main_stocks_id"
+          id="stocks"
+          name="stocks"
           value={data.value}
           className="w-full  border-slate-600/50 rounded-lg "
         >

@@ -49,8 +49,8 @@ export const links = [
     label: " Supply",
   },
   {
-    href: "/application/transactions",
-    icon: Package,
-    label: " Transaction",
+    href: "/application/request-supply",
+    icon: ShoppingCart,
+    label: " Request",
   },
 ];

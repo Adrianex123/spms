@@ -1,64 +1,86 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: any = {
-  productsData: [],
-  partsData: [],
+  foodsuppliesData: [],
+  allStocksData: [],
+  vehiclesData: [],
 };
 
-const orderCartOptions = createSlice({
-  name: "orderOptions",
+const requestCartOptions = createSlice({
+  name: "requestOptions",
   initialState: initialState,
   reducers: {
-    setProductsData: (state, action: PayloadAction<any>) => {
-      const productsStock = action.payload.productsData;
-      const productsCart = action.payload.productsCart;
-      // Update each stock_quantity of productsData on from productsCart
+    setFoodSuppliesData: (state, action: PayloadAction<any>) => {
+      const foodsuppliesStock = action.payload.allFoodSupplies;
+      state.foodsuppliesData = foodsuppliesStock;
+      console.log(state.foodsuppliesData);
+      // const foodsuppliesCart = action.payload.foodsuppliesCart;
+      // // Update each stock_quantity of productsData on from productsCart
 
-      const updatedProductsStock = productsStock
-        ? productsStock.map((stockProduct: any) => {
-            const cartProduct = productsCart.find(
-              (product: any) => product.product_id === stockProduct.id
+      // const updatedFoodSuppliesStock = foodsuppliesStock
+      //   ? foodsuppliesStock.map((stockFoodSupply: any) => {
+      //       const cartFoodSupply = foodsuppliesCart.find(
+      //         (foodsupply: any) =>
+      //           foodsupply.foodsupply_id === stockFoodSupply.id
+      //       );
+      //       if (cartFoodSupply) {
+      //         return {
+      //           ...stockFoodSupply,
+      //           stock_quantity:
+      //             stockFoodSupply.stock_quantity - cartFoodSupply.quantity,
+      //         };
+      //       }
+      //       return stockFoodSupply;
+      //     })
+      //   : [];
+    },
+    setAllStocksData: (state, action: PayloadAction<any>) => {
+      const supplyStock = action.payload.allStocksData;
+      const stocksCart = action.payload.stocksCart;
+
+      const updatedEquipmentsStock = supplyStock
+        ? supplyStock.map((stockEquipment: any) => {
+            const cartEquipment = stocksCart.find(
+              (equipment: any) => equipment.stocks === stockEquipment.id
             );
-            if (cartProduct) {
+            if (cartEquipment) {
               return {
-                ...stockProduct,
+                ...stockEquipment,
                 stock_quantity:
-                  stockProduct.stock_quantity - cartProduct.quantity,
+                  stockEquipment.stock_quantity - cartEquipment.quantity,
               };
             }
-            return stockProduct;
+            return stockEquipment;
           })
         : [];
 
-      state.productsData = updatedProductsStock;
+      state.allStocksData = updatedEquipmentsStock;
     },
-    setPartsData: (state, action: PayloadAction<any>) => {
-      const partsStock = action.payload.partsData;
-      const partsCart = action.payload.partsCart;
+    setVehiclesData: (state, action: PayloadAction<any>) => {
+      const vehiclesStock = action.payload.vehiclesData;
+      // const vehiclesCart = action.payload.vehiclesCart;
 
-      const updatedPartsStock = partsStock
-        ? partsStock.map((stockPart: any) => {
-            const cartPart = partsCart.find(
-              (part: any) => part.part_id === stockPart.id
-            );
-            if (cartPart) {
-              return {
-                ...stockPart,
-                stock_quantity: stockPart.stock_quantity - cartPart.quantity,
-              };
-            }
-            return stockPart;
-          })
-        : [];
+      // const updatedVehiclesStock = vehiclesStock
+      //   ? vehiclesStock.map((stockVehicle: any) => {
+      //       const cartVehicle = vehiclesCart.find(
+      //         (vehicle: any) => vehicle.vehicle_id === stockVehicle.id
+      //       );
+      //       if (cartVehicle) {
+      //         return {
+      //           ...stockVehicle,
+      //           stock_quantity:
+      //             stockVehicle.stock_quantity - cartVehicle.quantity,
+      //         };
+      //       }
+      //       return stockVehicle;
+      //     })
+      //   : [];
 
-      state.partsData = updatedPartsStock;
-    },
-    reset(state) {
-      state.productsData = [];
-      state.partsData = [];
+      state.vehiclesData = vehiclesStock;
     },
   },
 });
 
-export const { setProductsData, setPartsData } = orderCartOptions.actions;
-export default orderCartOptions.reducer;
+export const { setFoodSuppliesData, setAllStocksData, setVehiclesData } =
+  requestCartOptions.actions;
+export default requestCartOptions.reducer;

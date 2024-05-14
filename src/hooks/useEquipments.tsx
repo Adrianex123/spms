@@ -6,11 +6,11 @@ export const useEquipments: any = () => {
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY!
   );
-  const [equipmentsData, setEquipmentsData] = useState<any>([]);
+  const [allStocksData, setEquipmentsData] = useState<any>([]);
   const [currentEquipmentData, setCurrentEquipmentData] = useState<any>([]);
 
   const createEquipment = async (props: any, duration?: any) => {
-    const result = await supabase.from("equipments").insert({
+    const result = await supabase.from("main_stocks").insert({
       name: props.name,
       description: props.description,
       image_url: props.image_url,
@@ -25,7 +25,7 @@ export const useEquipments: any = () => {
   };
   const getEquipments = async () => {
     const result = await supabase
-      .from("equipments")
+      .from("main_stocks")
       .select(
         `
         id,
@@ -48,7 +48,7 @@ export const useEquipments: any = () => {
   };
   const getEquipment = async (id: string, duration?: number) => {
     const { data, error } = await supabase
-      .from("equipments")
+      .from("main_stocks")
       .select(
         `
           id,
@@ -97,7 +97,7 @@ export const useEquipments: any = () => {
   };
   const deleteEquipment = async (props: any, duration: number = 2000) => {
     const result = await supabase
-      .from("equipments")
+      .from("main_stocks")
       .delete()
       .eq("id", props.id);
 
@@ -107,7 +107,7 @@ export const useEquipments: any = () => {
 
   return {
     // states
-    equipmentsData,
+    allStocksData,
     currentEquipmentData,
 
     // methods

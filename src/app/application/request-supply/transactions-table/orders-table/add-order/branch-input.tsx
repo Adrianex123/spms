@@ -10,25 +10,25 @@ import { FormControl } from "@/components/ui/form";
 import { useSelector } from "react-redux";
 
 export default function SelectDemo({ data }: { data: any }) {
-  const uomsData = useSelector((state: any) => state.uoms);
+  const branchesData = useSelector((state: any) => state.branches);
 
   return (
     <Select onValueChange={data.onChange} value={data.value}>
       <FormControl>
         <SelectTrigger
-          id="stocks"
-          name="stocks"
+          id="branch"
+          name="branch"
           value={data.value}
-          className="w-full  border-slate-600/50 rounded-lg "
+          className="w-full bg-lightComponentBg border-slate-600/50 rounded-lg "
         >
-          <SelectValue className="text-black" placeholder="Select a Stock" />
+          <SelectValue className="text-white" placeholder="Select a branch" />
         </SelectTrigger>
       </FormControl>
-      <SelectContent className="rounded-lg border-slate-600/50 text-black">
+      <SelectContent className="rounded-lg bg-lightComponentBg border-slate-600/50 text-white">
         <SelectGroup>
-          {uomsData.map((uom: any) => (
-            <SelectItem key={uom.id} value={uom.id.toString()}>
-              {uom.value}
+          {branchesData.map((branch: any) => (
+            <SelectItem key={branch.id} value={branch.id.toString()}>
+              {branch.value}
             </SelectItem>
           ))}
         </SelectGroup>

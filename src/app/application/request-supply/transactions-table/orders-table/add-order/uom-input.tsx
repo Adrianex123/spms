@@ -16,15 +16,15 @@ export default function SelectDemo({ data }: { data: any }) {
     <Select onValueChange={data.onChange} value={data.value}>
       <FormControl>
         <SelectTrigger
-          id="stocks"
-          name="stocks"
+          id="uom_id"
+          name="uom_id"
           value={data.value}
-          className="w-full  border-slate-600/50 rounded-lg "
+          className="w-full bg-lightComponentBg border-slate-600/50 rounded-lg "
         >
-          <SelectValue className="text-black" placeholder="Select a Stock" />
+          <SelectValue className="text-white" placeholder="Select a unit" />
         </SelectTrigger>
       </FormControl>
-      <SelectContent className="rounded-lg border-slate-600/50 text-black">
+      <SelectContent className="rounded-lg bg-lightComponentBg border-slate-600/50 text-white">
         <SelectGroup>
           {uomsData.map((uom: any) => (
             <SelectItem key={uom.id} value={uom.id.toString()}>

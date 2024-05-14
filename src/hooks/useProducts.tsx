@@ -10,7 +10,7 @@ export const useProducts: any = () => {
   const [currentProductData, setCurrentProductData] = useState<any>([]);
 
   const createProduct = async (props: any, duration?: any) => {
-    const result = await supabase.from("products").insert({
+    const result = await supabase.from("main_stocks").insert({
       name: props.name,
       description: props.description,
       image_url: props.image_url,
@@ -28,7 +28,7 @@ export const useProducts: any = () => {
   };
   const getProducts = async () => {
     const result = await supabase
-      .from("products")
+      .from("main_stocks")
       .select(
         `
           id,
@@ -64,7 +64,7 @@ export const useProducts: any = () => {
   };
   const getProduct = async (id: string, duration?: number) => {
     const { data, error } = await supabase
-      .from("products")
+      .from("main_stocks")
       .select(
         `
         id,
@@ -98,7 +98,7 @@ export const useProducts: any = () => {
   };
   const updateProduct = async (props: any, duration?: number) => {
     const result = await supabase
-      .from("products")
+      .from("main_stocks")
       .update({
         name: props.name,
         description: props.description,
@@ -116,7 +116,7 @@ export const useProducts: any = () => {
   };
   const updateProductStatus = async (props: any, duration?: number) => {
     const result = await supabase
-      .from("products")
+      .from("main_stocks")
       .update({
         status: props.status,
       })
@@ -127,7 +127,10 @@ export const useProducts: any = () => {
     return JSON.stringify(result);
   };
   const deleteProduct = async (props: any, duration: number = 2000) => {
-    const result = await supabase.from("products").delete().eq("id", props.id);
+    const result = await supabase
+      .from("main_stocks")
+      .delete()
+      .eq("id", props.id);
 
     await new Promise((resolve) => setTimeout(resolve, duration));
     return result;

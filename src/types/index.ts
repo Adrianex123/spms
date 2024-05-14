@@ -419,6 +419,7 @@ export type allPurchaseRequestsDisplay = {
   };
   use_foodsupplies: {}[];
   use_equipments: {}[];
+  use_stocks: {}[];
   use_vehicles: {}[];
   total_price: number;
   payment_method: string;

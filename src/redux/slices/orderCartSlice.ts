@@ -1,93 +1,131 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: any = {
-  productsCart: [],
-  partsCart: [],
+  foodsuppliesCart: [],
+  stocksCart: [],
+  vehiclesCart: [],
 };
 
-const orderCart = createSlice({
-  name: "orderCart",
+const requestCart = createSlice({
+  name: "requestCart",
   initialState: initialState,
   reducers: {
-    addProductToCart: (state, action: PayloadAction<any>) => {
-      state.productsCart.push(action.payload);
+    addFoodSupplyToCart: (state, action: PayloadAction<any>) => {
+      state.foodsuppliesCart.push(action.payload);
     },
-    addPartToCart: (state, action: PayloadAction<any>) => {
-      state.partsCart.push(action.payload);
+    addSupplyToCart: (state, action: PayloadAction<any>) => {
+      state.stocksCart.push(action.payload);
     },
-    removeProductFromCart: (state, action: PayloadAction<any>) => {
-      state.productsCart = state.productsCart.filter(
-        (product: any) => product.product_id !== action.payload
+    addVehicleToCart: (state, action: PayloadAction<any>) => {
+      state.vehiclesCart.push(action.payload);
+    },
+
+    removeFoodSupplyFromCart: (state, action: PayloadAction<any>) => {
+      state.foodsuppliesCart = state.foodsuppliesCart.filter(
+        (foodsupply: any) => foodsupply.foodsupply_id !== action.payload
       );
     },
-    removePartFromCart: (state, action: PayloadAction<any>) => {
-      state.partsCart = state.partsCart.filter(
-        (part: any) => part.part_id !== action.payload
+    removeEquipmentFromCart: (state, action: PayloadAction<any>) => {
+      state.stocksCart = state.stocksCart.filter(
+        (equipment: any) => equipment.stocks !== action.payload
+      );
+    },
+    removeVehicleFromCart: (state, action: PayloadAction<any>) => {
+      state.vehiclesCart = state.vehiclesCart.filter(
+        (vehicle: any) => vehicle.vehicle_id !== action.payload
       );
     },
 
-    incrementProductQuantity: (state, action: PayloadAction<any>) => {
-      state.productsCart = state.productsCart.map((product: any) => {
-        if (product.product_id === action.payload) {
-          return { ...product, quantity: product.quantity + 1 };
+    incrementFoodSupplyQuantity: (state, action: PayloadAction<any>) => {
+      state.foodsuppliesCart = state.foodsuppliesCart.map((foodsupply: any) => {
+        if (foodsupply.foodsupply_id === action.payload) {
+          return { ...foodsupply, quantity: foodsupply.quantity + 1 };
         }
-        return product;
+        return foodsupply;
       });
     },
-    decrementProductQuantity: (state, action: PayloadAction<any>) => {
-      state.productsCart = state.productsCart
-        .map((product: any) => {
-          if (product.product_id === action.payload) {
-            if (product.quantity === 1) {
+    decrementFoodSupplyQuantity: (state, action: PayloadAction<any>) => {
+      state.foodsuppliesCart = state.foodsuppliesCart
+        .map((foodsupply: any) => {
+          if (foodsupply.foodsupply_id === action.payload) {
+            if (foodsupply.quantity === 1) {
               return null; // Remove the product from cart
             } else {
-              return { ...product, quantity: product.quantity - 1 };
+              return { ...foodsupply, quantity: foodsupply.quantity - 1 };
             }
           }
-          return product;
+          return foodsupply;
         })
-        .filter((product: any) => product !== null);
+        .filter((foodsupply: any) => foodsupply !== null);
     },
-    incrementPartQuantity: (state, action: PayloadAction<any>) => {
-      state.partsCart = state.partsCart.map((part: any) => {
-        if (part.part_id === action.payload) {
-          return { ...part, quantity: part.quantity + 1 };
+    incrementEquipmentQuantity: (state, action: PayloadAction<any>) => {
+      state.stocksCart = state.stocksCart.map((equipment: any) => {
+        if (equipment.stocks === action.payload) {
+          return { ...equipment, quantity: equipment.quantity + 1 };
         }
-        return part;
+        return equipment;
       });
     },
-    decrementPartQuantity: (state, action: PayloadAction<any>) => {
-      state.partsCart = state.partsCart
-        .map((part: any) => {
-          if (part.part_id === action.payload) {
-            if (part.quantity === 1) {
+    decrementEquipmentQuantity: (state, action: PayloadAction<any>) => {
+      state.stocksCart = state.stocksCart
+        .map((equipment: any) => {
+          if (equipment.stocks === action.payload) {
+            if (equipment.quantity === 1) {
               return null; // Remove the part from cart
             } else {
-              return { ...part, quantity: part.quantity - 1 };
+              return { ...equipment, quantity: equipment.quantity - 1 };
             }
           }
-          return part;
+          return equipment;
         })
-        .filter((part: any) => part !== null);
+        .filter((equipment: any) => equipment !== null);
     },
-    resetOrderCart: (state) => {
-      state.productsCart = [];
-      state.partsCart = [];
-      state.productsTotalPrice = 0;
-      state.partsTotalPrice = 0;
+    incrementVehicleQuantity: (state, action: PayloadAction<any>) => {
+      state.vehiclesCart = state.vehiclesCart.map((vehicle: any) => {
+        if (vehicle.vehicle_id === action.payload) {
+          return { ...vehicle, quantity: vehicle.quantity + 1 };
+        }
+        return vehicle;
+      });
+    },
+    decrementVehicleQuantity: (state, action: PayloadAction<any>) => {
+      state.vehiclesCart = state.vehiclesCart
+        .map((vehicle: any) => {
+          if (vehicle.vehicle_id === action.payload) {
+            if (vehicle.quantity === 1) {
+              return null; // Remove the part from cart
+            } else {
+              return { ...vehicle, quantity: vehicle.quantity - 1 };
+            }
+          }
+          return vehicle;
+        })
+        .filter((vehicle: any) => vehicle !== null);
+    },
+    resetCart: (state) => {
+      state.foodsuppliesCart = [];
+      state.stocksCart = [];
+      state.vehiclesCart = [];
+      state.foodsuppliesTotalPrice = 0;
+      state.equipmentsTotalPrice = 0;
+      state.vehiclesTotalPrice = 0;
     },
   },
 });
 
 export const {
-  addProductToCart,
-  addPartToCart,
-  removePartFromCart,
-  removeProductFromCart,
-  incrementProductQuantity,
-  decrementProductQuantity,
-  incrementPartQuantity,
-  decrementPartQuantity,
-  resetOrderCart,
-} = orderCart.actions;
-export default orderCart.reducer;
+  addFoodSupplyToCart,
+  addSupplyToCart,
+  addVehicleToCart,
+  removeEquipmentFromCart,
+  removeFoodSupplyFromCart,
+  removeVehicleFromCart,
+  incrementFoodSupplyQuantity,
+  decrementFoodSupplyQuantity,
+  incrementEquipmentQuantity,
+  decrementEquipmentQuantity,
+  incrementVehicleQuantity,
+  decrementVehicleQuantity,
+  resetCart,
+} = requestCart.actions;
+export default requestCart.reducer;

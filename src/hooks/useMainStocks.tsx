@@ -11,7 +11,7 @@ export const useMainStocks: any = () => {
   const [currentUOMData, setCurrentUOMData] = useState<any>([]);
 
   const createStock = async (props: any, duration?: any) => {
-    const result = await supabase.from("request").insert({
+    const result = await supabase.from("main_stocks").insert({
       name: props.name,
       description: props.description,
       image_url: props.image_url,

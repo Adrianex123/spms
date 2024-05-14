@@ -16,6 +16,10 @@ import viewOrderServiceCartSlice from "./slices/viewOrderServiceCartSlice";
 import progressEntriesSlice from "./slices/progressEntriesSlice";
 import currentSessionSlice from "./slices/currentSessionSlice";
 import allMobileUsersSlice from "./slices/mobileUsersSlice";
+import requestVehicleCartOptionSlice from "./slices/orderVehicleCartOptionSlice";
+import requestVehicleCartSlice from "./slices/orderVehicleCartSlice";
+import requestCartOptionSlice from "./slices/orderCartOptionSlice";
+import requestCartSlice from "./slices/orderCartSlice";
 
 export const store = configureStore({
   reducer: {
@@ -28,6 +32,11 @@ export const store = configureStore({
     orderCartOptionSlice: orderCartOptionSlice,
     orderCart: orderCartSlice,
     branches: branchesSlice,
+
+    requestCartOptionSlice: requestCartOptionSlice,
+    requestVehicleCartOptionSlice: requestVehicleCartOptionSlice,
+    requestCart: requestCartSlice,
+    requestVehicleCart: requestVehicleCartSlice,
 
     orderServiceCartOptionSlice: orderServiceCartOptionSlice,
 
