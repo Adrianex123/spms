@@ -74,7 +74,7 @@ export default function Transactions() {
       .channel("stocks-follow-up")
       .on(
         "postgres_changes",
-        { event: "*", schema: "public", table: "main_stocks" },
+        { event: "*", schema: "public", table: "request" },
         (payload: any) => {
           getRequests();
         }

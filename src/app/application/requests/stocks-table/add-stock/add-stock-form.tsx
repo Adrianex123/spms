@@ -101,7 +101,7 @@ export default function StockForm({ setDialogOpen }: any) {
       }
 
       sonner("ADDED", {
-        description: `Stock Added!`,
+        description: `Badong Added!`,
       });
       setDialogOpen(false);
     });

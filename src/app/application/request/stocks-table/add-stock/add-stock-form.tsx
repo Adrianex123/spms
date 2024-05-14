@@ -42,7 +42,7 @@ import ImageInput from "./image-input";
 import { useTransition } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { cn } from "@/lib/utils";
-import { useMainStocks } from "@/hooks/useMainStocks";
+import { useRestocks } from "@/hooks/useReStocks";
 
 export const stocksSchema = z.object({
   name: z.string().min(1, {
@@ -76,7 +76,7 @@ export const stocksSchema = z.object({
 
 export default function StockForm({ setDialogOpen }: any) {
   const [isPending, startTransition] = useTransition();
-  const { createStock } = useMainStocks();
+  const { createStock } = useRestocks();
   const form = useForm<z.infer<typeof stocksSchema>>({
     resolver: zodResolver(stocksSchema),
     defaultValues: {

@@ -10,7 +10,7 @@ export const useFoodSupplies: any = () => {
   const [currentFoodSupplyData, setCurrentFoodSupplyData] = useState<any>([]);
 
   const createFoodSupply = async (props: any, duration?: any) => {
-    const result = await supabase.from("food_supplies").insert({
+    const result = await supabase.from("request").insert({
       name: props.name,
       description: props.description,
       image_url: props.image_url,
@@ -42,7 +42,7 @@ export const useFoodSupplies: any = () => {
   };
   const getFoodSupply = async (id: string, duration?: number) => {
     const { data, error } = await supabase
-      .from("food_supplies")
+      .from("main_stocks")
       .select(
         `
 *
@@ -57,7 +57,7 @@ export const useFoodSupplies: any = () => {
   };
   const updateFoodSupply = async (props: any, duration?: number) => {
     const result = await supabase
-      .from("food_supplies")
+      .from("main_stocks")
       .update({
         name: props.name,
         description: props.description,
@@ -73,7 +73,7 @@ export const useFoodSupplies: any = () => {
   };
   const updateFoodSupplyStatus = async (props: any, duration?: number) => {
     const result = await supabase
-      .from("food_supplies")
+      .from("main_stocks")
       .update({
         status: props.status,
       })
@@ -85,7 +85,7 @@ export const useFoodSupplies: any = () => {
   };
   const deleteFoodSupply = async (props: any, duration: number = 2000) => {
     const result = await supabase
-      .from("food_supplies")
+      .from("main_stocks")
       .delete()
       .eq("id", props.id);
 

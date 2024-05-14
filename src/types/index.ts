@@ -417,7 +417,7 @@ export type allPurchaseRequestsDisplay = {
     name: string;
     description: string;
   };
-  use_foodsupplies: {}[];
+
   use_equipments: {}[];
   use_stocks: {}[];
   use_vehicles: {}[];

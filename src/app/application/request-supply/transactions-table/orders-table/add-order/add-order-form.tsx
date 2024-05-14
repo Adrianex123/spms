@@ -41,14 +41,13 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import StatusInput from "./status-input";
-// import { calamityTypes } from "@/app/application/employees/data/data";
 
 export default function RequestForm({ setDialogOpen }: any) {
   const [isPending, startTransition] = useTransition();
   const { createRequest } = useRequests();
   const dispatch = useDispatch();
   const router = useRouter();
-
+  const currentUser = useSelector((state: any) => state.currentSession);
   const requestCart = useSelector((state: any) => state.requestCart);
   const requestCartOptions = useSelector(
     (state: any) => state.requestCartOptionSlice
@@ -73,15 +72,15 @@ export default function RequestForm({ setDialogOpen }: any) {
         quantity: z.coerce.number(),
       })
     ),
-    use_foodsupplies: z.array(
-      z.object({
-        stocks: z.coerce.number(),
-        name: z.string(),
-        description: z.string(),
-        image: z.string(),
-        quantity: z.coerce.number(),
-      })
-    ),
+    // use_stocks: z.array(
+    //   z.object({
+    //     stocks: z.coerce.number(),
+    //     name: z.string(),
+    //     description: z.string(),
+    //     image: z.string(),
+    //     quantity: z.coerce.number(),
+    //   })
+    // ),
     use_vehicles: z.array(
       z.object({
         vehicles_id: z.coerce.number(),
@@ -117,8 +116,8 @@ export default function RequestForm({ setDialogOpen }: any) {
     [form.formState.errors, requestCart]
   );
 
-  form.setValue("use_stocks", requestCart.stocksCart);
-  form.setValue("use_foodsupplies", requestCart.foodsuppliesCart);
+  // form.setValue("use_stocks", requestCart.stocksCart);
+  form.setValue("use_stocks", requestCart.foodsuppliesCart);
   form.setValue("use_vehicles", requestCart.vehiclesCart);
   // form.setValue(
   //   "subtotal",
@@ -167,17 +166,17 @@ export default function RequestForm({ setDialogOpen }: any) {
 
   async function onSubmit(data: any) {
     startTransition(async () => {
-      // const result = await createRequest(data, 500);
+      const result = await createRequest(data, 500);
 
-      // const { error } = result;
-      // if (error?.message) {
-      //   toast({
-      //     variant: "destructive",
-      //     title: "⚠️Error",
-      //     description: error.message,
-      //   });
-      //   return;
-      // }
+      const { error } = result;
+      if (error?.message) {
+        toast({
+          variant: "destructive",
+          title: "⚠️Error",
+          description: error.message,
+        });
+        return;
+      }
 
       setDialogOpen(false);
       sonner("✨Success", {
@@ -208,7 +207,7 @@ export default function RequestForm({ setDialogOpen }: any) {
                 className="w-full rounded-none relative"
                 defaultValue={["item-1", "item-2", "item-3", "item-4"]}
               >
-                <AccordionItem value="item-1">
+                {/* <AccordionItem value="item-1">
                   <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
                     Equipments Summary
                   </AccordionTrigger>
@@ -221,7 +220,7 @@ export default function RequestForm({ setDialogOpen }: any) {
                       data={requestCart.stocksCart}
                     />
                   </AccordionContent>
-                </AccordionItem>
+                </AccordionItem> */}
                 <AccordionItem value="item-2">
                   <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
                     Food Supply Summary
@@ -342,7 +341,7 @@ export default function RequestForm({ setDialogOpen }: any) {
           <Button
             className="data-[state=active]:bg-applicationPrimary data-[state=inactive]:hover:bg-applicationPrimary/80
             data-[state=inactive]:hover:text-white/80
-            data-[state=active]:text-whitepx-4 py-2 text-xs font-bold rounded-lg min-w-[105px] flex justify-center place-items-center gap-2 bg-primary/90 hover:bg-primary primary-glow transition-all duration-300"
+            data-[state=active]:text-whitepx-4 py-2 text-xs font-bold rounded-lg min-w-[105px] flex justify-center place-items-center gap-2 transition-all duration-300"
             type="submit"
             disabled={
               requestCart.vehiclesCart.length === 0 &&
@@ -352,7 +351,7 @@ export default function RequestForm({ setDialogOpen }: any) {
                 : false
             }
           >
-            <span className={cn({ hidden: isPending })}>Create Order</span>
+            <span className={cn({ hidden: isPending })}>Submit Request</span>
             <AiOutlineLoading3Quarters
               className={cn(" animate-spin", { hidden: !isPending })}
             />

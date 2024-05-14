@@ -53,4 +53,9 @@ export const links = [
     icon: ShoppingCart,
     label: " Request",
   },
+  {
+    href: "/application/request",
+    icon: ShoppingCart,
+    label: " mod",
+  },
 ];

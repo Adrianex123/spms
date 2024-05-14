@@ -272,20 +272,15 @@ export const useRequests: any = () => {
 
   const createRequest = async (props: any, duration?: any) => {
     const result: any = await supabase
-      .from("requests")
+      .from("request")
       .insert({
-        requester_first_name: props.requester_first_name,
-        requester_last_name: props.requester_last_name,
-        requester_contact_number: props.requester_contact_number,
-        requester_email: props.requester_email,
-        employee_id: "6232cf7a-000f-4026-a583-96be937a0adf",
-        inventory_id: props.inventory_id,
-        subtotal: props.subtotal,
-        total_price: props.total_price,
+        name: props.name,
+        description: props.description,
+        quantity: props.quantity,
+        uom_id: props.uom_id,
+        image: props.image,
+        category: props.category,
         status: props.status,
-        discount: props.discount,
-        payment_method: props.payment_method,
-        amount_paid: props.amount_paid,
       })
       .select();
 
@@ -294,7 +289,7 @@ export const useRequests: any = () => {
     }
 
     const foodsupplyResult = await supabase
-      .from("use_food_supplies")
+      .from("request")
       .insert(
         props.use_foodsupply.map((foodsupply: any) => ({
           request_id: result.data[0].id,
@@ -329,7 +324,7 @@ export const useRequests: any = () => {
   };
   const getRequests = async () => {
     const result = await supabase
-      .from("requests")
+      .from("request")
       .select(
         `            
         id,
@@ -428,7 +423,7 @@ export const useRequests: any = () => {
   };
   const getRequest = async (id: string, duration?: number) => {
     const { data, error } = await supabase
-      .from("requests")
+      .from("request")
       .select(
         `
         id,
@@ -496,7 +491,7 @@ export const useRequests: any = () => {
   };
   const updateRequest = async (props: any, duration?: number) => {
     const result = await supabase
-      .from("requests")
+      .from("request")
       .update({
         name: props.name,
         description: props.description,
@@ -514,7 +509,7 @@ export const useRequests: any = () => {
   };
   const updateRequestStatus = async (props: any, duration?: number) => {
     const result = await supabase
-      .from("requests")
+      .from("request")
       .update({
         status: props.status,
       })

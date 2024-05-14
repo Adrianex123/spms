@@ -65,7 +65,7 @@ export default function RequestContent({ request }: any) {
               {request && request.length > 0 && (
                 <FoodSupplyRequests
                   columns={initiateFoodSupplyRequestsColumns()}
-                  data={request[0].use_foodsupplies}
+                  data={request[0].use_stocks}
                 />
               )}
             </AccordionContent>
@@ -184,14 +184,14 @@ export default function RequestContent({ request }: any) {
           </div>
           <Separator className="bg-slate-400" />
           <div className="flex flex-col gap-3">
-            {request && request.length > 0 && request[0].use_foodsupplies && (
+            {request && request.length > 0 && request[0].use_stocks && (
               <div className="flex justify-between">
                 <p className="text-xs 2xl:text-sm text-slate-400">
                   foodsupplies Total
                 </p>
                 <p className="text-xs 2xl:text-sm text-slate-50">
                   ₱{" "}
-                  {request[0].use_foodsupplies
+                  {request[0].use_stocks
                     .reduce(
                       (acc: any, item: any) => acc + item.price * item.quantity,
                       0
@@ -231,7 +231,7 @@ export default function RequestContent({ request }: any) {
                 <p className="text-xs 2xl:text-sm text-slate-50">
                   - ₱{" "}
                   {(
-                    (request[0].use_foodsupplies.reduce(
+                    (request[0].use_stocks.reduce(
                       (acc: any, item: any) => acc + item.price * item.quantity,
                       0
                     ) +
@@ -411,8 +411,8 @@ export default function RequestContent({ request }: any) {
               </div>
               {request &&
                 request[0] &&
-                request[0].use_foodsupplies &&
-                request[0].use_foodsupplies.map((item: any, index: number) => (
+                request[0].use_stocks &&
+                request[0].use_stocks.map((item: any, index: number) => (
                   <div key={index} className="flex justify-between">
                     <div className="flex gap-1">
                       <p className="max-w-[95px] truncate text-[10px] font-semibold text-black space-mono-regular tracking-tighter">
@@ -436,8 +436,8 @@ export default function RequestContent({ request }: any) {
                   ₱{" "}
                   {request &&
                     request[0] &&
-                    request[0].use_foodsupplies &&
-                    request[0].use_foodsupplies
+                    request[0].use_stocks &&
+                    request[0].use_stocks
                       .reduce(
                         (acc: any, item: any) =>
                           acc + item.price * item.quantity,
@@ -504,10 +504,10 @@ export default function RequestContent({ request }: any) {
                   ₱{" "}
                   {request &&
                     request[0] &&
-                    request[0].use_foodsupplies &&
+                    request[0].use_stocks &&
                     request[0].use_equipments &&
                     (
-                      request[0].use_foodsupplies.reduce(
+                      request[0].use_stocks.reduce(
                         (acc: any, item: any) =>
                           acc + item.price * item.quantity,
                         0
@@ -547,11 +547,11 @@ export default function RequestContent({ request }: any) {
                   - ₱{" "}
                   {request &&
                     request[0] &&
-                    request[0].use_foodsupplies &&
+                    request[0].use_stocks &&
                     request[0].use_equipments &&
                     request[0].discount &&
                     (
-                      (request[0].use_foodsupplies.reduce(
+                      (request[0].use_stocks.reduce(
                         (acc: any, item: any) =>
                           acc + item.price * item.quantity,
                         0
