@@ -64,7 +64,7 @@ export default function RequestForm({ setDialogOpen }: any) {
     // calamity_type: z.string(),
 
     use_stocks: z.array(
-      z.object({
+      w({
         stocks: z.coerce.number(),
         name: z.string(),
         description: z.string(),

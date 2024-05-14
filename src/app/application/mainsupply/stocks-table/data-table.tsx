@@ -62,7 +62,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div className="w-full min-h-[765px] 2xl:min-h-[790px] flex flex-col justify-between gap-3 p-4 rounded-sm">
+    <div className="w-full min-h-[765px] 2xl:min-h-[790px] flex flex-col justify-between gap-3 pt-4 rounded-sm">
       <div className="w-full flex justify-between ">
         <DataTableToolbar table={table} />
       </div>
