@@ -1,7 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 import { useState } from "react";
 
-export const useFoodSupplies: any = () => {
+export const useRequestProducts: any = () => {
   const supabase = createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY!

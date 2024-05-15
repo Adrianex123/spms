@@ -577,7 +577,7 @@ export default function RequestContent({ request }: any) {
                   ₱{" "}
                   {request && request[0] && request[0].total_price
                     ? request[0].total_price.toFixed(2)
-                    : "0.00"}
+                    : ""}
                 </p>
               </div>
               <div className="flex justify-between">

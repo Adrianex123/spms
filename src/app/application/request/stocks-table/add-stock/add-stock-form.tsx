@@ -48,6 +48,9 @@ export const stocksSchema = z.object({
   name: z.string().min(1, {
     message: "Stock name is required",
   }),
+  department_name: z.string().min(1, {
+    message: "Stock name is required",
+  }),
   description: z.string().min(1, {
     message: "Stock description is required",
   }),
@@ -117,6 +120,26 @@ export default function StockForm({ setDialogOpen }: any) {
           <div className="w-full h-full flex flex-col gap-4">
             <div className="w-full flex justify-center place-items-center gap-4">
               <div className="w-full flex flex-col gap-4">
+                <div className="w-full flex flex-col">
+                  <FormField
+                    control={form.control}
+                    name="department_name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-xs">Stock Name</FormLabel>
+                        <FormControl>
+                          <Input
+                            className="rounded-lg  border-slate-600/50"
+                            {...field}
+                            type="text"
+                            placeholder="Stock name"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
                 <div className="w-full flex flex-col">
                   <FormField
                     control={form.control}

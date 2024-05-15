@@ -18,9 +18,9 @@ export default function EmployeesDialog() {
   return (
     <Dialog open={dialogIsOpen} onOpenChange={setDialogIsOpen}>
       <DialogTrigger asChild>
-        <Button className="text-xs font-bold rounded-md flex gap-2 bg-applicationPrimary hover:bg-applicationPrimary transition-all duration-300">
+        {/* <Button className="text-xs font-bold rounded-md flex gap-2 bg-applicationPrimary hover:bg-applicationPrimary transition-all duration-300">
           New Request
-        </Button>
+        </Button> */}
       </DialogTrigger>
       <DialogContent className="sm:max-w-[500px] border border-lightBorder shadow-2xl">
         <DialogHeader>

@@ -10,7 +10,7 @@ import {
 } from "@/redux/slices/orderCartSlice";
 
 type cartItem = {
-  foodsupply_id: number;
+  requestProducts_id: number;
   name: string;
   description: string;
   image: string;
@@ -28,7 +28,7 @@ export const initiateColumns = (
     {
       id: "name",
       accessorKey: "name",
-      header: "FoodSupply",
+      header: " Item",
       cell: ({ row }) => {
         return (
           <div className="flex place-items-between gap-4">
@@ -67,7 +67,7 @@ export const initiateColumns = (
               type="button"
               onClick={() => {
                 dispatch(
-                  decrementFoodSupplyQuantity(row.original.foodsupply_id)
+                  decrementFoodSupplyQuantity(row.original.requestProducts_id)
                 );
               }}
             >
@@ -79,13 +79,13 @@ export const initiateColumns = (
               type="button"
               disabled={
                 foodsuppliesDataOptions.find(
-                  (foodsupply: any) =>
-                    foodsupply.id === row.original.foodsupply_id
+                  (requestProducts: any) =>
+                    requestProducts.id === row.original.requestProducts_id
                 ).stock_quantity === 0
               }
               onClick={() => {
                 dispatch(
-                  incrementFoodSupplyQuantity(row.original.foodsupply_id)
+                  incrementFoodSupplyQuantity(row.original.requestProducts_id)
                 );
               }}
             >

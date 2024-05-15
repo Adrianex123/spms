@@ -1,7 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: any = {
-  foodsuppliesCart: [],
+  requestsCart: [],
   stocksCart: [],
   vehiclesCart: [],
 };
@@ -11,7 +11,7 @@ const requestCart = createSlice({
   initialState: initialState,
   reducers: {
     addFoodSupplyToCart: (state, action: PayloadAction<any>) => {
-      state.foodsuppliesCart.push(action.payload);
+      state.requestsCart.push(action.payload);
     },
     addSupplyToCart: (state, action: PayloadAction<any>) => {
       state.stocksCart.push(action.payload);
@@ -21,8 +21,9 @@ const requestCart = createSlice({
     },
 
     removeFoodSupplyFromCart: (state, action: PayloadAction<any>) => {
-      state.foodsuppliesCart = state.foodsuppliesCart.filter(
-        (foodsupply: any) => foodsupply.foodsupply_id !== action.payload
+      state.requestsCart = state.requestsCart.filter(
+        (requestProducts: any) =>
+          requestProducts.requestProducts_id !== action.payload
       );
     },
     removeEquipmentFromCart: (state, action: PayloadAction<any>) => {
@@ -37,26 +38,29 @@ const requestCart = createSlice({
     },
 
     incrementFoodSupplyQuantity: (state, action: PayloadAction<any>) => {
-      state.foodsuppliesCart = state.foodsuppliesCart.map((foodsupply: any) => {
-        if (foodsupply.foodsupply_id === action.payload) {
-          return { ...foodsupply, quantity: foodsupply.quantity + 1 };
+      state.requestsCart = state.requestsCart.map((requestProducts: any) => {
+        if (requestProducts.requestProducts_id === action.payload) {
+          return { ...requestProducts, quantity: requestProducts.quantity + 1 };
         }
-        return foodsupply;
+        return requestProducts;
       });
     },
     decrementFoodSupplyQuantity: (state, action: PayloadAction<any>) => {
-      state.foodsuppliesCart = state.foodsuppliesCart
-        .map((foodsupply: any) => {
-          if (foodsupply.foodsupply_id === action.payload) {
-            if (foodsupply.quantity === 1) {
+      state.requestsCart = state.requestsCart
+        .map((requestProducts: any) => {
+          if (requestProducts.requestProducts_id === action.payload) {
+            if (requestProducts.quantity === 1) {
               return null; // Remove the product from cart
             } else {
-              return { ...foodsupply, quantity: foodsupply.quantity - 1 };
+              return {
+                ...requestProducts,
+                quantity: requestProducts.quantity - 1,
+              };
             }
           }
-          return foodsupply;
+          return requestProducts;
         })
-        .filter((foodsupply: any) => foodsupply !== null);
+        .filter((requestProducts: any) => requestProducts !== null);
     },
     incrementEquipmentQuantity: (state, action: PayloadAction<any>) => {
       state.stocksCart = state.stocksCart.map((equipment: any) => {
@@ -103,7 +107,7 @@ const requestCart = createSlice({
         .filter((vehicle: any) => vehicle !== null);
     },
     resetCart: (state) => {
-      state.foodsuppliesCart = [];
+      state.requestsCart = [];
       state.stocksCart = [];
       state.vehiclesCart = [];
       state.foodsuppliesTotalPrice = 0;

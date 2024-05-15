@@ -63,7 +63,7 @@ const viewOrderCart = createSlice({
             if (part.quantity === 1) {
               return null; // Remove the part from cart
             } else {
-              return { ...part, quantity: part.quantity - 1 };
+              return { ...part, quantity: part.y - 1 };
             }
           }
           return part;

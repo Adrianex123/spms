@@ -14,7 +14,7 @@ export const links = [
     label: "Dashboard",
   },
   {
-    href: "/application/requests",
+    href: "/application/Requesting",
     icon: ShoppingCart,
     label: "Request",
   },
@@ -56,6 +56,6 @@ export const links = [
   {
     href: "/application/request",
     icon: ShoppingCart,
-    label: " mod",
+    label: " Requested Items",
   },
 ];

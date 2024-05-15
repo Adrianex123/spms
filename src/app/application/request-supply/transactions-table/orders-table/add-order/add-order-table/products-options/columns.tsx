@@ -21,7 +21,7 @@ type option = {
   inventory: any;
 };
 
-export const initiateColumns = (dispatch: any, foodsuppliesCart: any) => {
+export const initiateColumns = (dispatch: any, requestsCart: any) => {
   const columns: ColumnDef<option>[] = [
     {
       id: "name",
@@ -81,15 +81,15 @@ export const initiateColumns = (dispatch: any, foodsuppliesCart: any) => {
               )}
               type="button"
               disabled={
-                foodsuppliesCart.some(
-                  (foodsupply: any) =>
-                    foodsupply.foodsupply_id === row.original.id
+                requestsCart.some(
+                  (requestProducts: any) =>
+                    requestProducts.requestProducts_id === row.original.id
                 ) || row.original.stock_quantity === 0
               }
               onClick={() => {
                 dispatch(
                   addFoodSupplyToCart({
-                    foodsupply_id: row.original.id,
+                    requestProducts_id: row.original.id,
                     // inventory_id: row.original.inventory.id,
                     name: row.original.name,
                     description: row.original.description,
@@ -102,9 +102,9 @@ export const initiateColumns = (dispatch: any, foodsuppliesCart: any) => {
               <div
                 className={cn(
                   "rounded-md text-white bg-applicationPrimary px-4 py-2 text-base",
-                  foodsuppliesCart.some(
-                    (foodsupply: any) =>
-                      foodsupply.foodsupply_id === row.original.id
+                  requestsCart.some(
+                    (requestProducts: any) =>
+                      requestProducts.requestProducts_id === row.original.id
                   )
                     ? "Added"
                     : row.original.stock_quantity === 0
@@ -112,9 +112,9 @@ export const initiateColumns = (dispatch: any, foodsuppliesCart: any) => {
                     : "Add"
                 )}
               >
-                {foodsuppliesCart.some(
-                  (foodsupply: any) =>
-                    foodsupply.foodsupply_id === row.original.id
+                {requestsCart.some(
+                  (requestProducts: any) =>
+                    requestProducts.requestProducts_id === row.original.id
                 )
                   ? "Added"
                   : row.original.stock_quantity === 0
@@ -122,8 +122,9 @@ export const initiateColumns = (dispatch: any, foodsuppliesCart: any) => {
                   : "Add"}
               </div>
             </Button>
-            {foodsuppliesCart.some(
-              (foodsupply: any) => foodsupply.foodsupply_id === row.original.id
+            {requestsCart.some(
+              (requestProducts: any) =>
+                requestProducts.requestProducts_id === row.original.id
             ) && (
               <Button
                 className="text-xs font-bold rounded-md flex gap-2 hover:text-white transition-all duration-300 px-4 py-2 cursor-pointer"

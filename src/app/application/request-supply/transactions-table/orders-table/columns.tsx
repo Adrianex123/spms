@@ -419,7 +419,7 @@ export const initialState = (branches: any) => {
             className="w-fit py-2 flex place-items-center justify-center text-slate-400 rounded-full px-4 hover:bg-applicationPrimary hover:text-black hover:border-applicationPrimary transition-all duration-300 primary-glow"
             href={`/application/requests/order/${id}`}
           >
-            {/* <FaEye className="mr-2 " /> */}
+            <FaEye className="mr-2 " />
             View
           </Link>
         );

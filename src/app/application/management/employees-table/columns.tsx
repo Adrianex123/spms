@@ -180,7 +180,7 @@ export const initateColumns = (departments: any, roles: any) => {
         return (
           <Link
             className="w-fit py-2 flex place-items-center justify-center text-slate-400 rounded-sm px-4 hover:bg-applicationPrimary hover:text-black hover:border-applicationPrimary transition-all duration-300 "
-            href={`/application/admin/management/user/${id}`}
+            href={`/application/management/user/${id}`}
           >
             View
           </Link>

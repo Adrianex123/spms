@@ -14,14 +14,14 @@ const requestCartOptions = createSlice({
       const foodsuppliesStock = action.payload.allFoodSupplies;
       state.foodsuppliesData = foodsuppliesStock;
       console.log(state.foodsuppliesData);
-      const foodsuppliesCart = action.payload.foodsuppliesCart;
+      const requestsCart = action.payload.requestsCart;
       // Update each stock_quantity of productsData on from productsCart
 
       const updatedFoodSuppliesStock = foodsuppliesStock
         ? foodsuppliesStock.map((stockFoodSupply: any) => {
-            const cartFoodSupply = foodsuppliesCart.find(
-              (foodsupply: any) =>
-                foodsupply.foodsupply_id === stockFoodSupply.id
+            const cartFoodSupply = requestsCart.find(
+              (requestProducts: any) =>
+                requestProducts.requestProducts_id === stockFoodSupply.id
             );
             if (cartFoodSupply) {
               return {

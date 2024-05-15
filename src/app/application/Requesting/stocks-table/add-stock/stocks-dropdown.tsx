@@ -10,7 +10,7 @@ import { FormControl } from "@/components/ui/form";
 import { useSelector } from "react-redux";
 
 export default function SelectDemo({ data }: { data: any }) {
-  const stocksData = useSelector((state: any) => state.stocks);
+  const uomsData = useSelector((state: any) => state.uoms);
 
   return (
     <Select onValueChange={data.onChange} value={data.value}>
@@ -26,9 +26,9 @@ export default function SelectDemo({ data }: { data: any }) {
       </FormControl>
       <SelectContent className="rounded-lg border-slate-600/50 text-black">
         <SelectGroup>
-          {stocksData.map((stocks: any) => (
-            <SelectItem key={stocks.id} value={stocks.id.toString()}>
-              {stocks.value}
+          {uomsData.map((uom: any) => (
+            <SelectItem key={uom.id} value={uom.id.toString()}>
+              {uom.value}
             </SelectItem>
           ))}
         </SelectGroup>

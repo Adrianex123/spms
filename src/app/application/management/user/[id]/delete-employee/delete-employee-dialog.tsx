@@ -51,7 +51,7 @@ export default function DeleteEmployeeDialog({ employeeData }: any) {
         ),
       });
       setDialogIsOpen(false);
-      redirect("/application/admin/management");
+      redirect("/application/management");
     });
   }
 

@@ -48,7 +48,7 @@ export default function DeleteEmployeeDialog({ department }: any) {
         ),
       });
       setDialogIsOpen(false);
-      router.push("/application/admin/departments");
+      router.push("/application/departments");
     });
   }
 

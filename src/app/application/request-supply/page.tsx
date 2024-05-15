@@ -11,7 +11,7 @@ import { HomeIcon } from "lucide-react";
 import { setBranchesData } from "@/redux/slices/branchesSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useMainStocks } from "@/hooks/useMainStocks";
-import { useFoodSupplies } from "@/hooks/useFoodSupplies";
+import { useRequestProducts } from "@/hooks/useRequestProducts";
 import {
   setAllStocksData,
   setFoodSuppliesData,
@@ -26,7 +26,7 @@ export default function Transactions() {
   // const { getBranches, allBranchesData } = useBranches();
   // const { getProducts, productsData } = useProducts();
   const { getStocks, setStocksData } = useMainStocks();
-  const { getFoodSupplies, allFoodSupplies } = useFoodSupplies();
+  const { getFoodSupplies, allFoodSupplies } = useRequestProducts();
   const { getVehicles, vehiclesData } = useVehicles();
 
   // const branchesData = allBranchesData.map((branch: any) => ({
@@ -36,8 +36,8 @@ export default function Transactions() {
   //   icon: HomeIcon,
   // }));
 
-  const foodsuppliesCart = useSelector(
-    (state: any) => state.requestCart.foodsuppliesCart
+  const requestsCart = useSelector(
+    (state: any) => state.requestCart.requestsCart
   );
   const stocksCart = useSelector((state: any) => state.requestCart.stocksCart);
   const vehiclesCart = useSelector(
@@ -46,7 +46,7 @@ export default function Transactions() {
 
   // dispatch(setBranchesData(branchesData));
 
-  dispatch(setFoodSuppliesData({ allFoodSupplies, foodsuppliesCart }));
+  dispatch(setFoodSuppliesData({ allFoodSupplies, requestsCart }));
   dispatch(setAllStocksData({ setStocksData, stocksCart }));
   dispatch(setVehiclesData({ vehiclesData, vehiclesCart }));
 

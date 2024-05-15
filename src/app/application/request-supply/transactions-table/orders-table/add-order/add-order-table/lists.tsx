@@ -22,8 +22,8 @@ export default function RequestCartOptions({}: {}) {
     (state: any) => state.requestCartOptionSlice.vehiclesData
   );
 
-  const foodsuppliesCart = useSelector(
-    (state: any) => state.requestCart.foodsuppliesCart
+  const requestsCart = useSelector(
+    (state: any) => state.requestCart.requestsCart
   );
   const stocksCart = useSelector((state: any) => state.requestCart.stocksCart);
   const vehiclesCart = useSelector(
@@ -56,7 +56,7 @@ export default function RequestCartOptions({}: {}) {
         className="w-full h-full bg-darkBg border border-lightBorder rounded-xl max-h-[500px] min-h-[500px] 2xl:max-h-[600px] 2xl:min-h-[600px]"
       >
         <FoodSuppliesOptionsDataTable
-          columns={initiateFoodSuppliesColumns(dispatch, foodsuppliesCart)}
+          columns={initiateFoodSuppliesColumns(dispatch, requestsCart)}
           data={foodsuppliesOption}
         />
       </TabsContent>

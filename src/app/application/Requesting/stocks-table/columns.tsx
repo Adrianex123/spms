@@ -256,7 +256,7 @@ export const initialState = (uoms?: any) => {
         return (
           <Link
             className="w-fit py-2 flex place-items-center justify-center text-slate-400 rounded-md px-4 hover:bg-applicationPrimary hover:text-black hover:border-applicationPrimary transition-all duration-300 primary-glow"
-            href={`/application/admin/stocks/stock/${id}`}
+            href={`/application/stocks/stock/${id}`}
           >
             <FaEye />
             &nbsp; View

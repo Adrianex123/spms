@@ -42,10 +42,13 @@ import ImageInput from "./image-input";
 import { useTransition } from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { cn } from "@/lib/utils";
-import { useMainStocks } from "@/hooks/useMainStocks";
+import { useRestocks } from "@/hooks/useReStocks";
 
 export const stocksSchema = z.object({
   name: z.string().min(1, {
+    message: "Stock name is required",
+  }),
+  department_name: z.string().min(1, {
     message: "Stock name is required",
   }),
   description: z.string().min(1, {
@@ -76,7 +79,7 @@ export const stocksSchema = z.object({
 
 export default function StockForm({ setDialogOpen }: any) {
   const [isPending, startTransition] = useTransition();
-  const { createStock } = useMainStocks();
+  const { createStock } = useRestocks();
   const form = useForm<z.infer<typeof stocksSchema>>({
     resolver: zodResolver(stocksSchema),
     defaultValues: {
@@ -101,7 +104,7 @@ export default function StockForm({ setDialogOpen }: any) {
       }
 
       sonner("ADDED", {
-        description: `Badong Added!`,
+        description: `Stock Added!`,
       });
       setDialogOpen(false);
     });
@@ -117,6 +120,26 @@ export default function StockForm({ setDialogOpen }: any) {
           <div className="w-full h-full flex flex-col gap-4">
             <div className="w-full flex justify-center place-items-center gap-4">
               <div className="w-full flex flex-col gap-4">
+                <div className="w-full flex flex-col">
+                  <FormField
+                    control={form.control}
+                    name="department_name"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="text-xs">Stock Name</FormLabel>
+                        <FormControl>
+                          <Input
+                            className="rounded-lg  border-slate-600/50"
+                            {...field}
+                            type="text"
+                            placeholder="Stock name"
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
                 <div className="w-full flex flex-col">
                   <FormField
                     control={form.control}

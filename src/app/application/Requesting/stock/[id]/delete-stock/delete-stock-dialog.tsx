@@ -44,7 +44,7 @@ export default function DeleteEmployeeDialog({ stock }: any) {
         description: "Successfuly! Deleted",
       });
       setDialogIsOpen(false);
-      router.push("/application/admin/stocks");
+      router.push("/application/stocks");
     });
   }
 

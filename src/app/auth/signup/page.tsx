@@ -54,7 +54,7 @@ export default function Login() {
           </pre>
         ),
       });
-      return redirect("/application/admin");
+      return redirect("/application/dashboard");
     });
   }
 

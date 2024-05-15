@@ -105,7 +105,7 @@ export const initateColumns = (departments: any) => {
         return (
           <Link
             className="w-fit py-2 flex place-items-center justify-center text-slate-400 rounded-sm px-4 hover:bg-applicationPrimary hover:text-black hover:border-applicationPrimary transition-all duration-300 "
-            href={`/application/admin/departments/department/${id}`}
+            href={`/application/departments/department/${id}`}
           >
             <FaEye />
             &nbsp; View

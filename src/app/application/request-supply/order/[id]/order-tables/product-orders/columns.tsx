@@ -6,7 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
 type cartItem = {
-  foodsupply_id: number;
+  requestProducts_id: number;
   name: string;
   description: string;
   image_url: string;
@@ -21,7 +21,7 @@ export const initiateColumns = () => {
     {
       id: "name",
       accessorKey: "name",
-      header: "Food Supply",
+      header: " Supply",
       cell: ({ row }) => {
         return (
           <div className="flex place-items-between gap-4">

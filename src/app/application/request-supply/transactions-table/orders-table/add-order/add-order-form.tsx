@@ -43,126 +43,103 @@ import { useRouter } from "next/navigation";
 import StatusInput from "./status-input";
 
 export default function RequestForm({ setDialogOpen }: any) {
+  const currentUser = useSelector((state: any) => state.currentSession);
   const [isPending, startTransition] = useTransition();
   const { createRequest } = useRequests();
   const dispatch = useDispatch();
   const router = useRouter();
-  const currentUser = useSelector((state: any) => state.currentSession);
+
   const requestCart = useSelector((state: any) => state.requestCart);
-  const requestCartOptions = useSelector(
-    (state: any) => state.requestCartOptionSlice
+  const orderCartOptionSlice = useSelector(
+    (state: any) => state.orderCartOptionSlice
   );
 
   const [minTotalPrice, setMinTotalPrice] = useState(0);
 
-  const RequestSchema: any = z.object({
-    // requester_first_name: z.string().nullable(),
-    // requester_last_name: z.string().nullable(),
-    // requester_email: z.string().nullable(),
-    // requester_contact_number: z.coerce.number().nullable(),
+  const orderSchema: any = z.object({
+    // customer_first_name: z.string().nullable(),
+    // customer_last_name: z.string().nullable(),
+    // customer_email: z.string().nullable(),
+    // customer_contact_number: z.coerce.number().nullable(),
+    // status: z.string(),
+    // payment_method: z.string().min(1, { message: "Payment method required" }),
+    //  inventory_id: z.string(),
+    //  .min(1, { message: "Branch is required" }),
+    //   .transform((arg) => new Number(arg)),
     // employee_id: z.string(),
-    // calamity_type: z.string(),
+    // subtotal: z.coerce.number(),
+    total_price: z.coerce.number(),
 
-    use_stocks: z.array(
-      w({
-        stocks: z.coerce.number(),
-        name: z.string(),
-        description: z.string(),
-        image: z.string(),
-        quantity: z.coerce.number(),
-      })
-    ),
-    // use_stocks: z.array(
-    //   z.object({
-    //     stocks: z.coerce.number(),
-    //     name: z.string(),
-    //     description: z.string(),
-    //     image: z.string(),
-    //     quantity: z.coerce.number(),
-    //   })
-    // ),
-    use_vehicles: z.array(
+    request: z.array(
       z.object({
-        vehicles_id: z.coerce.number(),
+        product_id: z.coerce.number(),
         inventory_id: z.coerce.number(),
         name: z.string(),
-        description: z.string(),
-        image: z.string(),
+
+        image: z.string().nullable(),
+        barcode: z.string().nullable(),
+        // uom_name: z.string(),
         quantity: z.coerce.number(),
+        price: z.coerce.number(),
       })
     ),
   });
-  const form = useForm<z.infer<typeof RequestSchema>>({
-    resolver: zodResolver(RequestSchema),
+  const form = useForm<z.infer<typeof orderSchema>>({
+    resolver: zodResolver(orderSchema),
     defaultValues: {
-      requester_first_name: "",
-      requester_last_name: "",
-      requester_email: "",
-      requester_contact_number: 0,
-      employee_id: "",
-      payment_method: "",
+      employee_id: currentUser.id,
+
       subtotal: 0,
       total_price: 0,
     },
   });
 
-  useEffect(
-    () => {
-      // if form has error then console.log
-      console.log(form.formState.errors);
-      console.log(requestCart);
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [form.formState.errors, requestCart]
+  // form.setValue("request", requestCart.stocksCart);
+  form.setValue("request", requestCart.requestsCart);
+  form.setValue(
+    "subtotal",
+    requestCart.requestsCart
+      .reduce(
+        // requestCart.stocksCart.reduce(
+        //   (acc: any, equipment: any) =>
+        //     acc + equipment.price * equipment.quantity,
+        //   0
+        // ) +
+        (acc: any, requestProducts: any) =>
+          acc + requestProducts.price * requestProducts.quantity,
+        0
+      )
+      //+
+      // requestCart.vehiclesCart.reduce(
+      //   (acc: any, vehicle: any) => acc + vehicle.price * vehicle.quantity,
+      //   0
+      // )
+      .toFixed(3)
   );
-
-  // form.setValue("use_stocks", requestCart.stocksCart);
-  form.setValue("use_stocks", requestCart.foodsuppliesCart);
-  form.setValue("use_vehicles", requestCart.vehiclesCart);
-  // form.setValue(
-  //   "subtotal",
-  //   (
-  //     requestCart.stocksCart.reduce(
-  //       (acc: any, equipment: any) =>
-  //         acc + equipment.price * equipment.quantity,
-  //       0
-  //     ) +
-  //     requestCart.foodsuppliesCart.reduce(
-  //       (acc: any, foodsupply: any) =>
-  //         acc + foodsupply.price * foodsupply.quantity,
-  //       0
-  //     ) +
-  //     requestCart.vehiclesCart.reduce(
-  //       (acc: any, vehicle: any) => acc + vehicle.price * vehicle.quantity,
-  //       0
-  //     )
-  //   ).toFixed(3)
-  // );
-  // form.setValue(
-  //   "total_price",
-  //   Number(
-  //     (
-  //       requestCart.stocksCart.reduce(
-  //         (acc: any, equipment: any) =>
-  //           acc + equipment.price * equipment.quantity,
-  //         0
-  //       ) +
-  //       (
-  //         requestCart.foodsuppliesCart.reduce(
-  //           (acc: any, foodsupply: any) =>
-  //             acc + foodsupply.price * foodsupply.quantity,
-  //           0
-  //         ) +
-  //         requestCart.vehiclesCart.reduce(
-  //           (acc: any, vehicle: any) => acc + vehicle.price * vehicle.quantity,
-  //           0
-  //         )
-  //       )()
-  //     )
-  //       .toFixed(3)
-  //       .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-  //   )
-  // );
+  form.setValue(
+    "total_price",
+    Number(
+      requestCart.requestsCart
+        .reduce(
+          (acc: any, requestProducts: any) =>
+            acc + requestProducts.price * requestProducts.quantity,
+          0
+        )
+        //  +
+        // requestCart.vehiclesCart.reduce(
+        //   (acc: any, vehicle: any) => acc + vehicle.price * vehicle.quantity,
+        //   0
+        // )
+        // requestCart.stocksCart.reduce(
+        //   (acc: any, equipment: any) =>
+        //     acc + equipment.price * equipment.quantity,
+        //   0
+        // ) +
+        // ()
+        .toFixed(3)
+        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    )
+  );
 
   async function onSubmit(data: any) {
     startTransition(async () => {
@@ -223,33 +200,33 @@ export default function RequestForm({ setDialogOpen }: any) {
                 </AccordionItem> */}
                 <AccordionItem value="item-2">
                   <AccordionTrigger className="font-bold bg-darkBg sticky top-0">
-                    Food Supply Summary
+                    Items
                   </AccordionTrigger>
                   <AccordionContent className="bg-darkComponentBg rounded-xl">
                     <FoodSuppliesCart
                       columns={
-                        requestCartOptions &&
-                        requestCartOptions.foodsuppliesData
+                        orderCartOptionSlice &&
+                        orderCartOptionSlice.foodsuppliesData
                           ? initiateFoodSupplyCartColumns(
                               dispatch,
-                              requestCartOptions.foodsuppliesData
+                              orderCartOptionSlice.foodsuppliesData
                             )
                           : []
                       }
-                      data={requestCart.foodsuppliesCart}
+                      data={requestCart.requestsCart}
                     />
                   </AccordionContent>
                 </AccordionItem>
               </Accordion>
               <div className="w-full flex-col relative">
                 <div className="w-full py-2 flex gap-8 position sticky bottom-[-4px] bg-darkBg m-0 text-sm">
-                  {/* <span className="w-full text-end text-slate-400">
+                  <span className="w-full text-end text-slate-400">
                     Subtotal
                   </span>
                   <span className="w-[20%] text-end">{`₱ ${(
-                    requestCart.foodsuppliesCart.reduce(
-                      (acc: any, foodsupply: any) =>
-                        acc + foodsupply.price * foodsupply.quantity,
+                    requestCart.requestsCart.reduce(
+                      (acc: any, requestProducts: any) =>
+                        acc + requestProducts.price * requestProducts.quantity,
                       0
                     ) +
                     requestCart.vehiclesCart.reduce(
@@ -267,10 +244,10 @@ export default function RequestForm({ setDialogOpen }: any) {
                       // sum all the food_supplies and equipments
                       3
                     )
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}</span> */}
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}</span>
                 </div>
 
-                {/* <div className="w-full py-2 flex gap-8 position sticky bottom-[-4px] bg-darkBg m-0 text-sm">
+                <div className="w-full py-2 flex gap-8 position sticky bottom-[-4px] bg-darkBg m-0 text-sm">
                   <span className="w-full text-end text-slate-400">Tax</span>
                   <span className="w-[20%] text-end">₱ 0.00</span>
                 </div>
@@ -286,9 +263,10 @@ export default function RequestForm({ setDialogOpen }: any) {
                   </span>
                   <span className="w-[20%] text-end">
                     {`- ₱ ${(
-                      requestCart.foodsuppliesCart.reduce(
-                        (acc: any, foodsupply: any) =>
-                          acc + foodsupply.price * foodsupply.quantity,
+                      requestCart.requestsCart.reduce(
+                        (acc: any, requestProducts: any) =>
+                          acc +
+                          requestProducts.price * requestProducts.quantity,
                         0
                       ) +
                       (requestCart.vehiclesCart.reduce(
@@ -306,14 +284,14 @@ export default function RequestForm({ setDialogOpen }: any) {
                       .toFixed(3)
                       .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
                   </span>
-                </div> */}
+                </div>
                 <div className="w-full py-6 flex gap-8 position sticky bottom-[-4px] bg-darkBg m-0 text-lg font-bold">
                   <span className="w-full text-end">Total</span>
                   <span className="w-[20%] text-end">
                     {(
-                      requestCart.foodsuppliesCart.reduce(
-                        (acc: any, foodsupply: any) =>
-                          acc + foodsupply.quantity,
+                      requestCart.requestsCart.reduce(
+                        (acc: any, requestProducts: any) =>
+                          acc + requestProducts.quantity,
                         0
                       ) +
                       requestCart.vehiclesCart.reduce(
@@ -344,11 +322,11 @@ export default function RequestForm({ setDialogOpen }: any) {
             data-[state=active]:text-whitepx-4 py-2 text-xs font-bold rounded-lg min-w-[105px] flex justify-center place-items-center gap-2 transition-all duration-300"
             type="submit"
             disabled={
-              requestCart.vehiclesCart.length === 0 &&
-              requestCart.stocksCart.length === 0 &&
-              requestCart.foodsuppliesCart.length === 0
-                ? true
-                : false
+              //   requestCart.vehiclesCart.length === 0 &&
+              //   requestCart.stocksCart.length === 0 &&
+              requestCart.requestsCart.length === 0
+              //     ? true
+              //     : false
             }
           >
             <span className={cn({ hidden: isPending })}>Submit Request</span>
